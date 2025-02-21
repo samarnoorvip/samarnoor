@@ -560,7 +560,7 @@
                     <div class="stat-label">سنوات خبرة</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">66+</div>
+                    <div class="stat-number">94+</div>
                     <div class="stat-label">عميل راضٍ</div>
                 </div>
                 <div class="stat">
@@ -767,7 +767,7 @@
                 <div class="social-icons">
                     <a href="https://wa.me/989150737826"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.instagram.com/samarnoor.vip"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.telegram.com/samarnoorvip"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
         </div>
@@ -795,5 +795,71 @@
             this.reset();
         });
     </script>
+    
+            <!-- اضافه کردن این دکمه به فوتر -->
+        <button id="darkModeToggle" class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2a4a73;
+            --background: #f9f4e8;
+            --text: #333;
+            --card-bg: white;
+        }
+        
+        [data-theme="dark"] {
+            --primary: #4a6da7;
+            --secondary: #7a9ac7;
+            --background: #1a1a2e;
+            --text: #e6e6e6;
+            --card-bg: #2a2a42;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            background: var(--card-bg);
+        }
+        
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        </style>
+        
+        <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const icon = darkModeToggle.querySelector('i');
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            icon.className = document.body.dataset.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', document.body.dataset.theme);
+        });
+        
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        </script>
 </body>
 </html>
