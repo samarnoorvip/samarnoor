@@ -710,46 +710,66 @@
 
 
         <!-- Contact Form Section -->
-                <section class="card" id="contact">
-                    <h2 class="section-title">تواصل معنا</h2>
-                    <p>اترك معلوماتك وسيقوم فريقنا بالتواصل معك في أقرب وقت ممكن</p>
+        <section class="card" id="contact">
+            <h2 class="section-title">تواصل معنا</h2>
+            <p>اترك معلوماتك وسيقوم فريقنا بالتواصل معك في أقرب وقت ممكن</p>
+
+            <form id="contact-form" method="POST">
+                <div class="form-group">
+                    <label for="name">الاسم</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">الدولة</label>
+                    <input type="text" id="country" name="country" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">الخدمة المطلوبة</label>
+                    <input type="text" id="service" name="service" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">تفاصيل إضافية</label>
+                    <textarea id="message" name="message" class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </section>
+
+        <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
         
-                    <style>
-                        .form-group:first-child {
-                            margin-top: 20px;
-                        }
-                      </style>
+        // جمع داده‌های فرم
+        var formData = new FormData(event.target);
+        var data = {};
         
-                    <form class="contact-form" action="https://formsubmit.co/fahiminia1997@gmail.com" method="POST">
-                        <div class="form-group">
-                            <label for="name">الاسم</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
+        formData.forEach(function(value, key) {
+            data[key] = value;
+        });
         
-                        <div class="form-group">
-                            <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="country">الدولة</label>
-                            <input type="text" id="country" name="country" class="form-control">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="service">الخدمة المطلوبة</label>
-                            <input type="text" id="service" name="service" class="form-control" required>
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="message">تفاصيل إضافية</label>
-                            <textarea id="message" name="message" class="form-control"></textarea>
-                        </div>
-        
-                        <button type="submit" class="btn">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </section>
-            </div>
+        // ارسال داده‌ها به Google Apps Script
+        fetch('AKfycbydXHhfd_j_VTpZG1ca-aQLwxyDxGWlZczU4ZImz-M', {  // لینک URL اسکریپت خود را اینجا وارد کنید
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => alert('تم إرسال البيانات بنجاح!'))
+        .catch(error => console.error('خطأ في الإرسال:', error));
+        });
+        </script>
+
 
     <!-- Footer -->
     <footer>
