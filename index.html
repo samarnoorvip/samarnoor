@@ -712,60 +712,115 @@
         <section class="card" id="contact" dir="rtl">
             <h2 class="section-title">تواصل معنا</h2>
             <p>اترك معلوماتك وسيقوم فريقنا بالتواصل معك في أقرب وقت ممكن</p>
-        
             <style>
-                /* Minimal styling only for form direction and placeholder alignment */
-                .contact-form input,
-                .contact-form textarea {
-                    direction: rtl;
+                /* Universal RTL and Typography Settings */
+                .card {
                     text-align: right;
+                    /* Use Arabic font first, then fallback to Persian fonts */
+                    font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Simplified Arabic', 'Iranian Sans', 'Tahoma', sans-serif;
                 }
                 
-                .contact-form input::placeholder,
-                .contact-form textarea::placeholder {
-                    direction: ltr;
+                .form-group {
+                    margin-bottom: 20px;
+                    direction: rtl;
+                }
+                
+                /* Input field optimizations for Arabic/Persian */
+                .form-control {
+                    width: 100%;
+                    padding: 8px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    direction: rtl;
+                    text-align: right;
+                    font-family: inherit;
+                    /* Support for both Arabic and Persian characters */
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    font-feature-settings: "kern" 1;
+                    /* Improve text rendering */
+                    text-rendering: optimizeLegibility;
+                }
+                
+                /* Force RTL input in all browsers */
+                input[type="text"],
+                input[type="email"],
+                input[type="tel"],
+                textarea {
+                    unicode-bidi: bidi-override;
+                }
+                
+                .form-control:focus {
+                    outline: none;
+                    border-color: #4a90e2;
+                }
+                
+                textarea.form-control {
+                    min-height: 100px;
+                    resize: vertical;
+                }
+                
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                }
+                
+                .btn {
+                    background-color: #4a90e2;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-family: inherit;
+                }
+                
+                /* Fix for placeholder text */
+                ::placeholder {
                     text-align: left;
+                    direction: ltr;
                 }
             </style>
                       
             <form class="contact-form" action="https://getform.io/f/aolmmqvb" method="POST">
                 <div class="form-group">
                     <label for="name">الاسم</label>
-                    <input type="text" id="name" name="name" required 
-                        placeholder="Enter your full name (First & Last name)">
+                    <input type="text" id="name" name="name" class="form-control" required
+                           placeholder="Enter your full name">
                 </div>
                 
                 <div class="form-group">
                     <label for="email">البريد الإلكتروني</label>
-                    <input type="email" id="email" name="email" required 
-                        placeholder="Enter your email address (example@domain.com)">
+                    <input type="email" id="email" name="email" class="form-control" required
+                           placeholder="Enter your email address">
                 </div>
                 
                 <div class="form-group">
                     <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="phone" required 
-                        placeholder="Enter your phone number with country code">
+                    <input type="tel" id="phone" name="phone" class="form-control" required
+                           placeholder="Enter your phone number">
                 </div>
                 
                 <div class="form-group">
                     <label for="country">الدولة</label>
-                    <input type="text" id="country" name="country" 
-                        placeholder="Enter your country name">
+                    <input type="text" id="country" name="country" class="form-control"
+                           placeholder="Enter your country">
                 </div>
                 
                 <div class="form-group">
                     <label for="service">الخدمة المطلوبة</label>
-                    <input type="text" id="service" name="service" required 
-                        placeholder="Describe the service you are looking for">
+                    <input type="text" id="service" name="service" class="form-control" required
+                           placeholder="Enter the service you need">
                 </div>
                 
                 <div class="form-group">
                     <label for="message">تفاصيل إضافية</label>
-                    <textarea id="message" name="message" 
-                        placeholder="Add any additional details or specific requirements"></textarea>
+                    <textarea id="message" name="message" class="form-control"
+                              placeholder="Enter additional details"></textarea>
                 </div>
                 
-                <button type="submit">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
+                <button type="submit" class="btn">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
             </form>
         </section>
 
