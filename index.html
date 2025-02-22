@@ -709,51 +709,77 @@
         </section>
 
 
-        <!-- Contact Form Section -->
-                <section class="card" id="contact">
-                    <h2 class="section-title">تواصل معنا</h2>
-                    <p>اترك معلوماتك وسيقوم فريقنا بالتواصل معك في أقرب وقت ممكن</p>
-        
-                    <style>
-                        .form-group:first-child {
-                            margin-top: 20px;
-                        }
-                      </style>
-        
-                    <form class="contact-form" action="https://getform.io/f/aolmmqvb" method="POST">
-                        <div class="form-group">
-                            <label for="name">الاسم</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="country">الدولة</label>
-                            <input type="text" id="country" name="country" class="form-control">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="service">الخدمة المطلوبة</label>
-                            <input type="text" id="service" name="service" class="form-control" required>
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="message">تفاصيل إضافية</label>
-                            <textarea id="message" name="message" class="form-control"></textarea>
-                        </div>
+       <!-- Contact Form Section -->
+        <section class="card" id="contact">
+            <h2 class="section-title">تواصل معنا</h2>
+            <p>اترك معلوماتك وسيقوم فريقنا بالتواصل معك في أقرب وقت ممكن</p>
 
-       <!-- فیلد مخفی برای مقابله با ربات‌های اسپم -->
-        
-                         <input type="hidden" name="_gotcha" style="display:none !important">
-        
-                        <button type="submit" class="btn">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </section>
-            </div>
+            <style>
+                .form-group {
+                    margin-top: 25px; /* افزایش فاصله بین فیلدها */
+                }
+
+                .contact-form {
+                    max-width: 500px;
+                    margin: auto;
+                }
+
+                .form-control {
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .btn {
+                    background-color: #007bff;
+                    color: white;
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+
+                .btn:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+
+            <form class="contact-form" action="https://getform.io/f/aolmmqvb" method="POST">
+                <div class="form-group">
+                    <label for="name">الاسم</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">الدولة</label>
+                    <input type="text" id="country" name="country" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">الخدمة المطلوبة</label>
+                    <input type="text" id="service" name="service" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">تفاصيل إضافية</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+
+                <!-- فیلد مخفی برای جلوگیری از اسپم -->
+                <input type="hidden" name="_gotcha" style="display:none !important">
+
+                <button type="submit" class="btn">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </section>
+
 
     <!-- Footer -->
     <footer>
