@@ -716,7 +716,6 @@
                 /* Universal RTL and Typography Settings */
                 .card {
                     text-align: right;
-                    /* Use Arabic font first, then fallback to Persian fonts */
                     font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Simplified Arabic', 'Iranian Sans', 'Tahoma', sans-serif;
                 }
                 
@@ -731,23 +730,25 @@
                     padding: 8px;
                     border: 1px solid #ddd;
                     border-radius: 4px;
-                    direction: rtl;
                     text-align: right;
                     font-family: inherit;
-                    /* Support for both Arabic and Persian characters */
                     -webkit-font-smoothing: antialiased;
                     -moz-osx-font-smoothing: grayscale;
                     font-feature-settings: "kern" 1;
-                    /* Improve text rendering */
                     text-rendering: optimizeLegibility;
                 }
                 
-                /* Force RTL input in all browsers */
-                input[type="text"],
+                /* Special handling for email and phone fields */
                 input[type="email"],
                 input[type="tel"],
+                .ltr-content {
+                    direction: ltr;
+                    text-align: left;
+                }
+                
+                input[type="text"],
                 textarea {
-                    unicode-bidi: bidi-override;
+                    direction: rtl;
                 }
                 
                 .form-control:focus {
@@ -780,6 +781,7 @@
                 ::placeholder {
                     text-align: left;
                     direction: ltr;
+                    opacity: 0.7;
                 }
             </style>
                       
@@ -792,13 +794,13 @@
                 
                 <div class="form-group">
                     <label for="email">البريد الإلكتروني</label>
-                    <input type="email" id="email" name="email" class="form-control" required
+                    <input type="email" id="email" name="email" class="form-control ltr-content" required
                            placeholder="Enter your email address">
                 </div>
                 
                 <div class="form-group">
                     <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" required
+                    <input type="tel" id="phone" name="phone" class="form-control ltr-content" required
                            placeholder="Enter your phone number">
                 </div>
                 
