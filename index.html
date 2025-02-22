@@ -714,9 +714,10 @@
             <p>اترك معلوماتك وسيقوم فريقنا بالتواصل معك في أقرب وقت ممكن</p>
         
             <style>
+                /* Universal RTL and Typography Settings */
                 .card {
                     text-align: right;
-                    font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Simplified Arabic', 'Tahoma', sans-serif;
+                    font-family: 'Traditional Arabic', 'Arabic Typesetting', 'Simplified Arabic', 'Iranian Sans', 'Tahoma', sans-serif;
                 }
                 
                 .form-group {
@@ -724,6 +725,7 @@
                     direction: rtl;
                 }
                 
+                /* Input field optimizations for Arabic/Persian */
                 .form-control {
                     width: 100%;
                     padding: 8px;
@@ -734,16 +736,24 @@
                     font-family: inherit;
                     -webkit-font-smoothing: antialiased;
                     -moz-osx-font-smoothing: grayscale;
+                    font-feature-settings: "kern" 1;
+                    text-rendering: optimizeLegibility;
+                }
+                
+                /* Force RTL input in all browsers */
+                input[type="text"],
+                input[type="email"],
+                input[type="tel"],
+                textarea {
+                    unicode-bidi: bidi-override;
                 }
                 
                 /* Style for English placeholders */
                 .form-control::placeholder {
                     text-align: left;
                     direction: ltr;
-                    font-family: 'Arial', sans-serif;
-                    color: #888;
-                    font-size: 14px;
                     opacity: 0.8;
+                    color: #888;
                 }
                 
                 .form-control:focus {
