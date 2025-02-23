@@ -697,9 +697,16 @@ import { Menu, X, ChevronDown, Home, Phone, User, Book, Package, HelpCircle, New
 export default Navigation;
 
             // رندر کردن کامپوننت
-            const container = document.getElementById('navigation-root');
-            const root = ReactDOM.createRoot(container);
-            root.render(<Navigation />);
+            document.addEventListener("DOMContentLoaded", function() {
+                const container = document.getElementById('navigation-root');
+                if (container) {
+                    const root = ReactDOM.createRoot(container);
+                    root.render(<Navigation />);
+                } else {
+                    console.error("خطا: `navigation-root` در صفحه یافت نشد!");
+                }
+            });
+
         </script>
 
     <div class="container">
