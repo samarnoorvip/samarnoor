@@ -483,143 +483,107 @@
                 flex: 0 0 100%;
             }
         }
-        
-             /* استایل‌های ضروری برای منو */
-            .nav-link {
-                color: #333;
-                text-decoration: none;
-                padding: 0.5rem 1rem;
-                transition: color 0.3s ease;
-            }
-
-            .nav-link:hover {
-                color: #1a365d;
-            }
-
-            .mobile-menu {
-                display: none;
-            }
-
-            @media (max-width: 768px) {
-                .mobile-menu {
-                    display: block;
-                }
-                
-                .desktop-menu {
-                    display: none;
-                }
-            }
     </style>
 
-    
-            <!-- اول Font Awesome -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-            
-            <!-- بعد React -->
-            <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-            
-            <!-- در آخر Babel -->
-            <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <!-- اسکریپت‌های React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+        
+        <!-- فونت آیکون -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         
 </head>
-
 <body>
     
     <!-- Navigation Container -->
- 
+    <div id="navigation-root"></div>
+
+    <script type="text/babel">
+      document.addEventListener("DOMContentLoaded", function() {
+        const container = document.getElementById('navigation-root');
+        if (container) {
+          const root = ReactDOM.createRoot(container);
+          root.render(<Navigation />);
+        } else {
+          console.error("خطا: `navigation-root` در صفحه یافت نشد!");
+        }
+      });
+    </script>
     
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="logo">
-                <img src="https://i.ibb.co/VyXSnRT/photo-2025-02-20-17-44-14.jpg" alt="سمرنور - أفضل الخدمات التجميلية في إيران">
-            </div>
-            <h1>مرحبا بكم في سمرنور للسياحة العلاجية</h1>
-            <p>خبراء السياحة العلاجية في إيران لأكثر من 7 سنوات. نقدم خدمات طبية وتجميلية متميزة بأيدي أمهر الأطباء وبأحدث التقنيات.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn"><i class="fas fa-stethoscope"></i> تعرف على خدماتنا</a>
-                <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> تواصل معنا</a>
-            </div>
-        </div>
-    </section>
-
         <!-- اضافه کردن کد Navigation -->
-<!-- ابتدا div برای نصب کامپوننت -->
-<div id="navigation-root"></div>
+        <script type="text/babel">
+            import React, { useState } from 'react';
+            import { Menu, X, ChevronDown, Home, Phone, User, Book, Package, HelpCircle, Newspaper } from 'lucide-react';
+            const Navigation = () => {
+            const [isOpen, setIsOpen] = React.useState(false);
+            const [activeDropdown, setActiveDropdown] = React.useState(null);
 
-<script type="text/babel">
-// تعریف کامپوننت با سینتکس قدیمی‌تر و سازگارتر
-const Navigation = () => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    
-    return (
-        <nav className="bg-white shadow-lg">
-            <div className="max-w-7xl mx-auto px-4">
-                {/* نوار اطلاعات تماس */}
-                <div className="bg-[#2a3b55] text-white py-2">
-                    <div className="flex justify-between items-center">
-                        <div className="flex gap-4">
-                            <a href="https://wa.me/989150737826" className="flex items-center">
-                                <i className="fab fa-whatsapp text-xl ml-1"></i>
-                                <span>989150737826+</span>
-                            </a>
-                            <a href="https://www.instagram.com/samarnoor.vip" className="flex items-center">
-                                <i className="fab fa-instagram text-xl ml-1"></i>
-                                <span>samarnoor.vip</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            const menuItems = [
+                {
+                title: 'الرئيسية',
+                icon: <i className="fas fa-home w-5 h-5" />,
+                path: '/',
+                },
+                {
+                title: 'المقالات والتعليم',
+                icon: <i className="fas fa-book w-5 h-5" />,
+                submenu: [
+                    { title: 'عمليات التجميل', path: '/articles/cosmetic-surgery' },
+                    { title: 'زراعة الشعر', path: '/articles/hair-transplant' },
+                    { title: 'طب الأسنان', path: '/articles/dental' },
+                    { title: 'السياحة العلاجية', path: '/articles/medical-tourism' },
+                ]
+                },
+                {
+                title: 'باقات الخدمات',
+                icon: <Package className="w-5 h-5" />,
+                submenu: [
+                    { title: 'باقة التجميل الشاملة', path: '/packages/cosmetic' },
+                    { title: 'باقة زراعة الشعر', path: '/packages/hair' },
+                    { title: 'باقة طب الأسنان', path: '/packages/dental' },
+                    { title: 'باقة السياحة العلاجية', path: '/packages/medical' },
+                ]
+                },
+                {
+                title: 'من نحن',
+                icon: <User className="w-5 h-5" />,
+                path: '/about',
+                },
+                {
+                title: 'الأسئلة الشائعة',
+                icon: <HelpCircle className="w-5 h-5" />,
+                path: '/faq',
+                },
+                {
+                title: 'اتصل بنا',
+                icon: <Phone className="w-5 h-5" />,
+                path: '/contact',
+                },
+            ];
 
-                {/* منوی اصلی */}
-                <div className="flex justify-between h-16">
-                    <div className="flex items-center">
-                        {/* لوگو */}
-                        <div className="flex-shrink-0">
-                            <img src="/logo.png" alt="سمرنور" className="h-8 w-auto"/>
-                        </div>
-                        
-                        {/* منوی دسکتاپ */}
-                        <div className="hidden md:flex items-center space-x-4">
-                            <a href="/" className="px-3 py-2 text-gray-700">الرئيسية</a>
-                            <a href="/services" className="px-3 py-2 text-gray-700">خدماتنا</a>
-                            <a href="/about" className="px-3 py-2 text-gray-700">من نحن</a>
-                            <a href="/contact" className="px-3 py-2 text-gray-700">اتصل بنا</a>
-                        </div>
-                    </div>
-
-                    {/* دکمه منوی موبایل */}
-                    <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700">
-                            <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'}`}></i>
-                        </button>
-                    </div>
-                </div>
-
-                {/* منوی موبایل */}
-                {isOpen && (
-                    <div className="md:hidden">
-                        <div className="px-2 pt-2 pb-3 space-y-1">
-                            <a href="/" className="block px-3 py-2 text-gray-700">الرئيسية</a>
-                            <a href="/services" className="block px-3 py-2 text-gray-700">خدماتنا</a>
-                            <a href="/about" className="block px-3 py-2 text-gray-700">من نحن</a>
-                            <a href="/contact" className="block px-3 py-2 text-gray-700">اتصل بنا</a>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </nav>
-    );
-};
-
-// رندر کردن کامپوننت
-ReactDOM.render(
-    <Navigation />,
-    document.getElementById('navigation-root')
-);
-</script>
+  
+  return (
+    <div className="sticky top-0 z-50">
+        <div className="bg-[#2a3b55] text-white py-2">
+            <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+                <div className="flex gap-4">
+                    <a href="https://wa.me/989150737826" className="flex items-center hover:text-gray-200">
+                         <i className="fab fa-whatsapp text-xl ml-1"></i>
+                          <span>989150737826+</span>
+                    </a>
+                     <a href="https://www.instagram.com/samarnoor.vip" className="flex items-center hover:text-gray-200">
+                         <i className="fab fa-instagram text-xl ml-1"></i>
+                         <span>samarnoor.vip</span>
+                    </a>
+                 </div>
+                 <a href="#contact" className="flex items-center hover:text-gray-200">
+                     <i className="fas fa-envelope ml-1"></i>
+                     <span>تواصل معنا</span>
+                 </a>
+             </div>
+         </div>
 
     {/* Main Navigation */}
     <nav className="bg-white shadow-lg">
@@ -724,12 +688,31 @@ export default Navigation;
             document.addEventListener("DOMContentLoaded", function() {
                 const container = document.getElementById('navigation-root');
                 if (container) {
-                    ReactDOM.render(<Navigation />, container);
+                    const root = ReactDOM.createRoot(container);
+                    root.render(<Navigation />);
                 } else {
-                    console.error("Navigation root element not found!");
+                    console.error("خطا: `navigation-root` در صفحه یافت نشد!");
                 }
             });
-            </script>
+
+        </script>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <img src="https://i.ibb.co/VyXSnRT/photo-2025-02-20-17-44-14.jpg" alt="سمرنور - أفضل الخدمات التجميلية في إيران">
+            </div>
+            <h1>مرحبا بكم في سمرنور للسياحة العلاجية</h1>
+            <p>خبراء السياحة العلاجية في إيران لأكثر من 7 سنوات. نقدم خدمات طبية وتجميلية متميزة بأيدي أمهر الأطباء وبأحدث التقنيات.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn"><i class="fas fa-stethoscope"></i> تعرف على خدماتنا</a>
+                <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+
 
     <div class="container">
         <!-- About Us Section -->
