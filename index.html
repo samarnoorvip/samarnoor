@@ -500,6 +500,19 @@
     <!-- Navigation Container -->
     <div id="navigation-root"></div>
 
+    <script type="text/babel">
+      document.addEventListener("DOMContentLoaded", function() {
+        const container = document.getElementById('navigation-root');
+        if (container) {
+          const root = ReactDOM.createRoot(container);
+          root.render(<Navigation />);
+        } else {
+          console.error("خطا: `navigation-root` در صفحه یافت نشد!");
+        }
+      });
+    </script>
+    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -517,56 +530,54 @@
 
         <!-- اضافه کردن کد Navigation -->
         <script type="text/babel">
-            
+            import React, { useState } from 'react';
+            import { Menu, X, ChevronDown, Home, Phone, User, Book, Package, HelpCircle, Newspaper } from 'lucide-react';
+            const Navigation = () => {
+            const [isOpen, setIsOpen] = React.useState(false);
+            const [activeDropdown, setActiveDropdown] = React.useState(null);
 
-import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Home, Phone, User, Book, Package, HelpCircle, Newspaper } from 'lucide-react';
-const Navigation = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [activeDropdown, setActiveDropdown] = React.useState(null);
-
-  const menuItems = [
-    {
-      title: 'الرئيسية',
-      icon: <i className="fas fa-home w-5 h-5" />,
-      path: '/',
-    },
-    {
-      title: 'المقالات والتعليم',
-      icon: <i className="fas fa-book w-5 h-5" />,
-      submenu: [
-        { title: 'عمليات التجميل', path: '/articles/cosmetic-surgery' },
-        { title: 'زراعة الشعر', path: '/articles/hair-transplant' },
-        { title: 'طب الأسنان', path: '/articles/dental' },
-        { title: 'السياحة العلاجية', path: '/articles/medical-tourism' },
-      ]
-    },
-    {
-      title: 'باقات الخدمات',
-      icon: <Package className="w-5 h-5" />,
-      submenu: [
-        { title: 'باقة التجميل الشاملة', path: '/packages/cosmetic' },
-        { title: 'باقة زراعة الشعر', path: '/packages/hair' },
-        { title: 'باقة طب الأسنان', path: '/packages/dental' },
-        { title: 'باقة السياحة العلاجية', path: '/packages/medical' },
-      ]
-    },
-    {
-      title: 'من نحن',
-      icon: <User className="w-5 h-5" />,
-      path: '/about',
-    },
-    {
-      title: 'الأسئلة الشائعة',
-      icon: <HelpCircle className="w-5 h-5" />,
-      path: '/faq',
-    },
-    {
-      title: 'اتصل بنا',
-      icon: <Phone className="w-5 h-5" />,
-      path: '/contact',
-    },
-  ];
+            const menuItems = [
+                {
+                title: 'الرئيسية',
+                icon: <i className="fas fa-home w-5 h-5" />,
+                path: '/',
+                },
+                {
+                title: 'المقالات والتعليم',
+                icon: <i className="fas fa-book w-5 h-5" />,
+                submenu: [
+                    { title: 'عمليات التجميل', path: '/articles/cosmetic-surgery' },
+                    { title: 'زراعة الشعر', path: '/articles/hair-transplant' },
+                    { title: 'طب الأسنان', path: '/articles/dental' },
+                    { title: 'السياحة العلاجية', path: '/articles/medical-tourism' },
+                ]
+                },
+                {
+                title: 'باقات الخدمات',
+                icon: <Package className="w-5 h-5" />,
+                submenu: [
+                    { title: 'باقة التجميل الشاملة', path: '/packages/cosmetic' },
+                    { title: 'باقة زراعة الشعر', path: '/packages/hair' },
+                    { title: 'باقة طب الأسنان', path: '/packages/dental' },
+                    { title: 'باقة السياحة العلاجية', path: '/packages/medical' },
+                ]
+                },
+                {
+                title: 'من نحن',
+                icon: <User className="w-5 h-5" />,
+                path: '/about',
+                },
+                {
+                title: 'الأسئلة الشائعة',
+                icon: <HelpCircle className="w-5 h-5" />,
+                path: '/faq',
+                },
+                {
+                title: 'اتصل بنا',
+                icon: <Phone className="w-5 h-5" />,
+                path: '/contact',
+                },
+            ];
 
   
   return (
