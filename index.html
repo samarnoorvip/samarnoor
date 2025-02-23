@@ -485,21 +485,14 @@
         }
     </style>
 
-        <!-- اضافه کردن React و ReactDOM -->
+
+        <!-- اسکریپت‌های React -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-        
-        <!-- اضافه کردن Babel برای پشتیبانی از JSX -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
         
-        <!-- اضافه کردن Lucide Icons -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
-
-        <!-- اضافه کردن Babel -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
-    
-    <!-- اضافه کردن Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+        <!-- فونت آیکون -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         
 </head>
 <body>
@@ -528,19 +521,19 @@
 
 import React, { useState } from 'react';
 import { Menu, X, ChevronDown, Home, Phone, User, Book, Package, HelpCircle, Newspaper } from 'lucide-react';
- const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+const Navigation = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [activeDropdown, setActiveDropdown] = React.useState(null);
 
   const menuItems = [
     {
       title: 'الرئيسية',
-      icon: <Home className="w-5 h-5" />,
+      icon: <i className="fas fa-home w-5 h-5" />,
       path: '/',
     },
     {
       title: 'المقالات والتعليم',
-      icon: <Book className="w-5 h-5" />,
+      icon: <i className="fas fa-book w-5 h-5" />,
       submenu: [
         { title: 'عمليات التجميل', path: '/articles/cosmetic-surgery' },
         { title: 'زراعة الشعر', path: '/articles/hair-transplant' },
