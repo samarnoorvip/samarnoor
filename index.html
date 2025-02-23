@@ -528,6 +528,10 @@
 
         <!-- اضافه کردن کد Navigation -->
         <script type="text/babel">
+              const Navigation = () => {
+            const [isOpen, setIsOpen] = React.useState(false);
+            const [activeDropdown, setActiveDropdown] = React.useState(null);
+
 
 import React, { useState } from 'react';
 import { Menu, X, ChevronDown, Home, Phone, User, Book, Package, HelpCircle, Newspaper } from 'lucide-react';
