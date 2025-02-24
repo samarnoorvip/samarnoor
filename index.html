@@ -646,10 +646,10 @@ const Navigation = () => {
                             <div className="md:hidden flex items-center">
                                 <button onClick={() => setIsOpen(!isOpen)} 
                                         className="text-gray-700 hover:text-[#1a365d] flex items-center gap-2">
-                                    <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
-                                    <span className="text-sm font-medium">
+                                        <span className="text-sm font-medium">
                                         {isOpen ? 'إغلاق' : 'القائمة'} {/* بسته/باز کردن منو */}
-                                    </span>
+                                        </span> 
+                                    <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
                                 </button>
                             </div>
                         </div>
