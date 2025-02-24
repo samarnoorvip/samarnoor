@@ -608,7 +608,7 @@ const Navigation = () => {
                     <div className="flex justify-between h-16">
                         {/* Logo */}
                         <div className="flex items-center">
-                            <a href="/samarnoor" className="flex-shrink-0">
+                            <a href="/samarnoor/" className="flex-shrink-0">
                                 <img className="h-12 w-auto" src="https://i.ibb.co/QjkMmjS0/logo.png" alt="سمرنور" />
                             </a>
                         </div>
@@ -629,6 +629,7 @@ const Navigation = () => {
                                             {item.submenu.map((subitem, subindex) => (
                                                 <a key={subindex}
                                                    href={subitem.link}
+                                                   target={subitem.target}
                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                     {subitem.title}
                                                 </a>
