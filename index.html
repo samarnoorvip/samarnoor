@@ -554,7 +554,7 @@ const Navigation = () => {
     const [activeDropdown, setActiveDropdown] = React.useState(null);
 
     const menuItems = [
-            {
+        {
             title: "سمر نور",
             link: "/samarnoor/",
         },
@@ -582,7 +582,36 @@ const Navigation = () => {
             ]
         },
         {
-            title: "اتصل بنا",
+            title: "العلاج",
+            link: "#services",
+            submenu: [
+                { title: "علاج العقم", link: "/pages/cosmetic.html" },
+                { title: "الأمراض القلبية", link: "/pages/hair.html" },
+                { title: "السرطان", link: "/pages/hair.html" },
+                { title: "ليزك العيون", link: "/pages/hair.html" },
+                { title: "زراعة الأعضاء", link: "/pages/dental.html" }
+            ]
+        },
+        {
+            title: "السياحة",
+            link: "/samarnoor/",
+        },
+        {
+            title: "التجارة",
+            link: "/samarnoor/",
+        },
+        {
+            title: "المعلومات",
+            link: "#services",
+            submenu: [
+                { title: "المستشفيات", link: "/pages/cosmetic.html" },
+                { title: "الفنادق", link: "/pages/hair.html" },
+                { title: "الأطباء", link: "/pages/hair.html" },
+                { title: "معرض الصور", link: "/pages/dental.html" }
+            ]
+        },
+        {
+            title: "المقالات",
             link: "#contact"
         }
     ];
