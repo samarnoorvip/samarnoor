@@ -514,20 +514,25 @@
         }
 
 
+        /* متن و تصویر */
 
-        
+
         .text-image-container, .image-text-overlay {
-            margin: 40px 20px;
+            margin: 40px 50px;    /* چپ، بالا و پایین و راست، چپ و راست*/
         }
 
         .text-content {
-            padding: 20px;
+            padding: 20px;    /* فاصله داخلی برای متن*/
         }
 
         .image-container img {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 8px;
+            padding: 0px;   /* فاصله داخلی بین تصویر و حاشیه آن*/
+            margin: 0px;   /* فاصله بیرونی بین تصویر و عناصر اطرافش*/ 
+            border-radius: 20px;   /* گوشه‌های تصویر را گرد می‌کند*/
+        }
+
+        .text-image-container {
+            gap: 10px; /* افزایش فاصله بین متن و تصویر */
         }
 
     </style>
