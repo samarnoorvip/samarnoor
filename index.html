@@ -607,7 +607,7 @@ const Navigation = () => {
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-center h-16">
                         {/* Logo */}
-                        <div className="absolute right-4 top-12">
+                        <div className="absolute left-4 top-13">
                             <a href="/samarnoor/" className="flex-shrink-0">
                                 <img className="h-12 w-auto" src="https://i.ibb.co/QjkMmjS0/logo.png" alt="سمرنور" />
                             </a>
@@ -646,10 +646,10 @@ const Navigation = () => {
                             <div className="md:hidden flex items-center justify-between w-full">
                                 <button onClick={() => setIsOpen(!isOpen)} 
                                         className="text-gray-700 hover:text-[#1a365d] flex items-center gap-2">
-                                        <span className="text-sm font-medium">
+                                    <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+                                    <span className="text-sm font-medium">
                                         {isOpen ? 'إغلاق' : 'القائمة'} {/* بسته/باز کردن منو */}
                                         </span> 
-                                    <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
                                 </button>
                             </div>
                         </div>
