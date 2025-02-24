@@ -620,7 +620,8 @@ const Navigation = () => {
                                      className="relative"
                                      onMouseEnter={() => setActiveDropdown(index)}
                                      onMouseLeave={() => setActiveDropdown(null)}>
-                                    <a href={item.link} 
+                                     <a href={item.link} 
+                                     target={item.target}
                                        className="px-3 py-2 text-gray-700 hover:text-[#1a365d]">
                                         {item.title}
                                     </a>
