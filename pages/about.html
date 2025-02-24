@@ -554,32 +554,64 @@ const Navigation = () => {
     const [activeDropdown, setActiveDropdown] = React.useState(null);
 
     const menuItems = [
-            {
+        {
             title: "سمر نور",
-            link: "/samarnoor/pages/about.html",
-            target: "_blank"
+            link: "/samarnoor/",
         },
 
         {
             title: "الجراحة التجميلية",
             link: "#about",
             submenu: [
-                { title: "عن الشركة", link: "/pages/about.html" },
-                { title: "فريق العمل", link: "/pages/team.html" },
-                { title: "تاريخنا", link: "/pages/history.html" }
+                { title: "تجميل الأنف", link: "/pages/about.html" },
+                { title: "زراعة الشعر", link: "/pages/team.html" },
+                { title: "الأسنان", link: "/pages/team.html" },
+                { title: "جراحة الجسم", link: "/pages/team.html" },
+                { title: "جراحة الوجه", link: "/pages/team.html" },
+                { title: "جراحة فقدان الوزن", link: "/pages/history.html" }
             ]
         },
         {
-            title: "خدماتنا",
+            title: "التجميل غير الجراحي",
             link: "#services",
             submenu: [
-                { title: "عمليات التجميل", link: "/pages/cosmetic.html" },
-                { title: "زراعة الشعر", link: "/pages/hair.html" },
-                { title: "طب الأسنان", link: "/pages/dental.html" }
+                { title: "حقن البلازما", link: "/pages/cosmetic.html" },
+                { title: "البوتوكس", link: "/pages/hair.html" },
+                { title: "الميزوتراپي", link: "/pages/hair.html" },
+                { title: "حقن الفيلر", link: "/pages/dental.html" }
             ]
         },
         {
-            title: "اتصل بنا",
+            title: "العلاج",
+            link: "#services",
+            submenu: [
+                { title: "علاج العقم", link: "/pages/cosmetic.html" },
+                { title: "الأمراض القلبية", link: "/pages/hair.html" },
+                { title: "السرطان", link: "/pages/hair.html" },
+                { title: "ليزك العيون", link: "/pages/hair.html" },
+                { title: "زراعة الأعضاء", link: "/pages/dental.html" }
+            ]
+        },
+        {
+            title: "السياحة",
+            link: "/samarnoor/",
+        },
+        {
+            title: "التجارة",
+            link: "/samarnoor/",
+        },
+        {
+            title: "المعلومات",
+            link: "#services",
+            submenu: [
+                { title: "المستشفيات", link: "/pages/cosmetic.html" },
+                { title: "الفنادق", link: "/pages/hair.html" },
+                { title: "الأطباء", link: "/pages/hair.html" },
+                { title: "معرض الصور", link: "/pages/dental.html" }
+            ]
+        },
+        {
+            title: "المقالات",
             link: "#contact"
         }
     ];
@@ -605,11 +637,11 @@ const Navigation = () => {
             {/* Main Navigation */}
             <nav className="bg-white shadow-lg">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="flex justify-between h-16">
+                    <div className="flex justify-center h-16">
                         {/* Logo */}
-                        <div className="flex items-center">
+                        <div className="absolute left-4 style={{ top: '20px' }}">
                             <a href="/samarnoor/" className="flex-shrink-0">
-                                <img className="h-12 w-auto" src="https://i.ibb.co/QjkMmjS0/logo.png" alt="سمرنور" />
+                                <img className="h-16 w-auto" src="https://i.ibb.co/QjkMmjS0/logo.png" alt="سمرنور" />
                             </a>
                         </div>
 
@@ -620,7 +652,8 @@ const Navigation = () => {
                                      className="relative"
                                      onMouseEnter={() => setActiveDropdown(index)}
                                      onMouseLeave={() => setActiveDropdown(null)}>
-                                    <a href={item.link} 
+                                     <a href={item.link} 
+                                     target={item.target}
                                        className="px-3 py-2 text-gray-700 hover:text-[#1a365d]">
                                         {item.title}
                                     </a>
@@ -629,6 +662,7 @@ const Navigation = () => {
                                             {item.submenu.map((subitem, subindex) => (
                                                 <a key={subindex}
                                                    href={subitem.link}
+                                                   target={subitem.target}
                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                     {subitem.title}
                                                 </a>
@@ -639,14 +673,18 @@ const Navigation = () => {
                             ))}
                         </div>
 
-                        {/* Mobile Menu Button */}
-                        <div className="md:hidden flex items-center">
-                            <button onClick={() => setIsOpen(!isOpen)} 
-                                    className="text-gray-700 hover:text-[#1a365d]">
-                                <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
-                            </button>
+                    
+                            {/* Mobile Menu Button */}
+                            <div className="md:hidden flex items-center justify-between w-full">
+                                <button onClick={() => setIsOpen(!isOpen)} 
+                                        className="text-gray-700 hover:text-[#1a365d] flex items-center gap-2">
+                                    <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+                                    <span className="text-sm font-medium">
+                                        {isOpen ? 'إغلاق' : 'القائمة'} {/* بسته/باز کردن منو */}
+                                        </span> 
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
                     {/* Mobile Menu */}
                     {isOpen && (
@@ -686,8 +724,6 @@ const Navigation = () => {
                 );
                 </script>
 
-
-    <div class="container">
 
 
         <!-- CTA Section -->
