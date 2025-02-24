@@ -645,8 +645,7 @@ const Navigation = () => {
                         {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
                             <button onClick={() => setIsOpen(!isOpen)} 
-                                    className="text-gray-700 hover:text-[#1a365d] flex items-center gap-2">
-                                <span className="text-sm font-medium">القائمة</span> {/* اضافه کردن کلمه منو به عربی */}
+                                    className="text-gray-700 hover:text-[#1a365d] flex items-between gap-2">
                                 <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
                             </button>
                         </div>
