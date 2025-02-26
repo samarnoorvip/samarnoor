@@ -681,6 +681,89 @@
         animation-delay: 0.4s;
     }
 
+
+
+         /* اسلاید شو */
+
+            .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        }
+
+        .slideshow-images {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        }
+
+        .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+        opacity: 1;
+        }
+
+        .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+        .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #333;
+        padding: 8px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        }
+
+        .nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .prev {
+        left: 10px;
+        }
+
+        .next {
+        right: 10px;
+        }
+
+        .indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        }
+
+        .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        }
+
+        .indicator.active {
+        background-color: white;
+        }
+
     </style>
 
             <script src="https://cdn.tailwindcss.com"></script>
@@ -694,6 +777,22 @@
             
             <!-- در آخر Babel -->
             <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+             <!-- اسلایدشو -->
+            <!-- افزودن React -->
+            <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+            <!-- افزودن Babel برای پشتیبانی از JSX -->
+            <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+            <!-- افزودن فایل CSS اسلایدشو -->
+            <link rel="stylesheet" href="slideshow.css">
+
+            <!-- افزودن فایل JS اسلایدشو -->
+            <script type="text/babel" src="slideshow.js"></script>
+
                 
 </head>
 <body>
@@ -902,6 +1001,7 @@ const Navigation = () => {
 
  <!-- کد HTML برای بخش جراحی بینی - متن در کنار تصویر -->
 <div class="container">
+
     <section class="medical-section fade-in-element">
         <div class="text-image-container">
             <!-- متن سمت راست -->
@@ -917,10 +1017,9 @@ const Navigation = () => {
                 </div>
 
             </div>
+
             <!-- تصویر سمت چپ -->
-            <div class="image-container">
-                <img src="https://i.ibb.co/tMZcXLFv/image.jpg" alt="جراحی بینی">
-            </div>
+            <div class="image-container" id="rhinoplasty-slideshow"></div>
 
             
         </div>
