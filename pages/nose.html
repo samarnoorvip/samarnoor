@@ -1153,11 +1153,6 @@ const Navigation = () => {
 <div class="container">
     <section class="medical-section fade-in-element">
         <div class="text-image-container">
-
-        <!-- تصویر سمت چپ -->
-        <!-- جایگزین کردن بخش تصویر با اسلایدشو -->
-        <div class="image-container" id="rhinoplasty-slideshow" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
-
             <!-- متن سمت راست -->
             <div class="text-content">
                 <h2 class="medical-title"> ترميم الأنف  </h2>
@@ -1171,6 +1166,8 @@ const Navigation = () => {
                 </div>
             </div>
 
+        <!-- تصویر سمت راست -->
+        <div class="image-container" id="rhinoplasty-slideshow" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
 
        </div>
 
@@ -1373,193 +1370,9 @@ const Navigation = () => {
     <section class="medical-section fade-in-element">
     <div class="text-image-container">
 
+        <!-- اسلایدشو چپ -->
+        <div class="image-container" id="rhinoplasty-slideshow-2" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
 
-        <script>
-        // کد اسلایدشو را مستقیماً در فایل HTML قرار می‌دهیم
-        document.addEventListener('DOMContentLoaded', function() {
-        const slideshowContainer = document.getElementById('rhinoplasty-slideshow-2');
-        
-        if (!slideshowContainer) {
-            console.error('کانتینر اسلایدشو پیدا نشد!');
-            return;
-        }
-        
-        // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
-        // از آدرس‌های معتبر استفاده کنید
-        const images = [
-        'https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg',
-        'https://i.ibb.co/vxHn5Tjw/768x576.jpg',
-        'https://i.ibb.co/tMZcXLFv/image.jpg',
-        'https://i.ibb.co/s9JGcp5v/image.jpg'                      // اصلاح شده
-        ];
-        
-        let currentIndex = 0;
-        let slideInterval;
-        
-        // ساخت عناصر اسلایدشو
-        function createSlideshow() {
-            // اضافه کردن تصاویر
-            images.forEach((src, index) => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = `ترمیم بینی - تصویر ${index + 1}`;
-            img.className = index === 0 ? 'active' : '';
-            
-            // اضافه کردن تست خطا برای تصاویر
-            img.onerror = function() {
-                console.error(`خطا در بارگذاری تصویر: ${src}`);
-                this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
-            };
-            
-            slideshowContainer.appendChild(img);
-            });
-            
-            // اضافه کردن دکمه‌های ناوبری با پشتیبانی از لمس
-            const prevButton = document.createElement('button');
-            prevButton.className = 'slideshow-nav nav-prev';
-            prevButton.innerHTML = '&#10095;';
-            prevButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            nextSlide();
-            });
-            prevButton.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            nextSlide();
-            });
-            slideshowContainer.appendChild(prevButton);
-            
-            const nextButton = document.createElement('button');
-            nextButton.className = 'slideshow-nav nav-next';
-            nextButton.innerHTML = '&#10094;';
-            nextButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            prevSlide();
-            });
-            nextButton.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            prevSlide();
-            });
-            slideshowContainer.appendChild(nextButton);
-            
-            // اضافه کردن نقاط نشانگر
-            const dotsContainer = document.createElement('div');
-            dotsContainer.className = 'slideshow-dots';
-            
-            images.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = index === 0 ? 'slideshow-dot active' : 'slideshow-dot';
-            dot.addEventListener('click', function(e) {
-                e.preventDefault();
-                goToSlide(index);
-            });
-            dot.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                goToSlide(index);
-            });
-            dotsContainer.appendChild(dot);
-            });
-            
-            slideshowContainer.appendChild(dotsContainer);
-            
-            // شروع اسلایدشو خودکار
-            startSlideshow();
-            
-            // پشتیبانی از لمس برای اسلایدشو
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            slideshowContainer.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            slideshowContainer.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            }, false);
-            
-            function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                // سوایپ به چپ، اسلاید بعدی
-                nextSlide();
-            } else if (touchEndX > touchStartX + 50) {
-                // سوایپ به راست، اسلاید قبلی
-                prevSlide();
-            }
-            }
-        }
-        
-        // نمایش اسلاید بعدی
-        function nextSlide() {
-            const slides = slideshowContainer.querySelectorAll('img');
-            const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
-            
-            if (!slides.length || !dots.length) return;
-            
-            slides[currentIndex].className = '';
-            dots[currentIndex].className = 'slideshow-dot';
-            
-            currentIndex = (currentIndex + 1) % slides.length;
-            
-            slides[currentIndex].className = 'active';
-            dots[currentIndex].className = 'slideshow-dot active';
-        }
-        
-        // نمایش اسلاید قبلی
-        function prevSlide() {
-            const slides = slideshowContainer.querySelectorAll('img');
-            const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
-            
-            if (!slides.length || !dots.length) return;
-            
-            slides[currentIndex].className = '';
-            dots[currentIndex].className = 'slideshow-dot';
-            
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            
-            slides[currentIndex].className = 'active';
-            dots[currentIndex].className = 'slideshow-dot active';
-        }
-        
-        // رفتن به اسلاید خاص
-        function goToSlide(index) {
-            const slides = slideshowContainer.querySelectorAll('img');
-            const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
-            
-            if (!slides.length || !dots.length) return;
-            
-            slides[currentIndex].className = '';
-            dots[currentIndex].className = 'slideshow-dot';
-            
-            currentIndex = index;
-            
-            slides[currentIndex].className = 'active';
-            dots[currentIndex].className = 'slideshow-dot active';
-        }
-        
-        // شروع اسلایدشو خودکار
-        function startSlideshow() {
-            stopSlideshow();
-            slideInterval = setInterval(nextSlide, 3000);
-        }
-        
-        // توقف اسلایدشو خودکار
-        function stopSlideshow() {
-            if (slideInterval) {
-            clearInterval(slideInterval);
-            }
-        }
-        
-        // متوقف کردن اسلایدشو با هاور موس (فقط در دسکتاپ)
-        if (window.matchMedia("(min-width: 768px)").matches) {
-            slideshowContainer.addEventListener('mouseenter', stopSlideshow);
-            slideshowContainer.addEventListener('mouseleave', startSlideshow);
-        }
-        
-        // ایجاد اسلایدشو
-        createSlideshow();
-        console.log('اسلایدشو با موفقیت ایجاد شد.');
-        });
-        </script>
 
             <!-- متن سمت راست -->
             <div class="text-content">
@@ -1575,8 +1388,195 @@ const Navigation = () => {
                 </div>
             </div>
 
-        <!-- جایگزین کردن بخش تصویر با اسلایدشو -->
+        <!-- اسلایدشو چپ -->
         <div class="image-container" id="rhinoplasty-slideshow-2" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
+
+        <script>
+            // کد اسلایدشو را مستقیماً در فایل HTML قرار می‌دهیم
+            document.addEventListener('DOMContentLoaded', function() {
+            const slideshowContainer = document.getElementById('rhinoplasty-slideshow-2');
+            
+            if (!slideshowContainer) {
+                console.error('کانتینر اسلایدشو پیدا نشد!');
+                return;
+            }
+            
+            // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
+            // از آدرس‌های معتبر استفاده کنید
+            const images = [
+            'https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg',
+            'https://i.ibb.co/vxHn5Tjw/768x576.jpg',
+            'https://i.ibb.co/tMZcXLFv/image.jpg',
+            'https://i.ibb.co/s9JGcp5v/image.jpg'                      // اصلاح شده
+            ];
+            
+            let currentIndex = 0;
+            let slideInterval;
+            
+            // ساخت عناصر اسلایدشو
+            function createSlideshow() {
+                // اضافه کردن تصاویر
+                images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `ترمیم بینی - تصویر ${index + 1}`;
+                img.className = index === 0 ? 'active' : '';
+                
+                // اضافه کردن تست خطا برای تصاویر
+                img.onerror = function() {
+                    console.error(`خطا در بارگذاری تصویر: ${src}`);
+                    this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
+                };
+                
+                slideshowContainer.appendChild(img);
+                });
+                
+                // اضافه کردن دکمه‌های ناوبری با پشتیبانی از لمس
+                const prevButton = document.createElement('button');
+                prevButton.className = 'slideshow-nav nav-prev';
+                prevButton.innerHTML = '&#10095;';
+                prevButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextSlide();
+                });
+                prevButton.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                nextSlide();
+                });
+                slideshowContainer.appendChild(prevButton);
+                
+                const nextButton = document.createElement('button');
+                nextButton.className = 'slideshow-nav nav-next';
+                nextButton.innerHTML = '&#10094;';
+                nextButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevSlide();
+                });
+                nextButton.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                prevSlide();
+                });
+                slideshowContainer.appendChild(nextButton);
+                
+                // اضافه کردن نقاط نشانگر
+                const dotsContainer = document.createElement('div');
+                dotsContainer.className = 'slideshow-dots';
+                
+                images.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = index === 0 ? 'slideshow-dot active' : 'slideshow-dot';
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    goToSlide(index);
+                });
+                dot.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+                });
+                
+                slideshowContainer.appendChild(dotsContainer);
+                
+                // شروع اسلایدشو خودکار
+                startSlideshow();
+                
+                // پشتیبانی از لمس برای اسلایدشو
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                slideshowContainer.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                slideshowContainer.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                }, false);
+                
+                function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    // سوایپ به چپ، اسلاید بعدی
+                    nextSlide();
+                } else if (touchEndX > touchStartX + 50) {
+                    // سوایپ به راست، اسلاید قبلی
+                    prevSlide();
+                }
+                }
+            }
+            
+            // نمایش اسلاید بعدی
+            function nextSlide() {
+                const slides = slideshowContainer.querySelectorAll('img');
+                const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+                
+                if (!slides.length || !dots.length) return;
+                
+                slides[currentIndex].className = '';
+                dots[currentIndex].className = 'slideshow-dot';
+                
+                currentIndex = (currentIndex + 1) % slides.length;
+                
+                slides[currentIndex].className = 'active';
+                dots[currentIndex].className = 'slideshow-dot active';
+            }
+            
+            // نمایش اسلاید قبلی
+            function prevSlide() {
+                const slides = slideshowContainer.querySelectorAll('img');
+                const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+                
+                if (!slides.length || !dots.length) return;
+                
+                slides[currentIndex].className = '';
+                dots[currentIndex].className = 'slideshow-dot';
+                
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                
+                slides[currentIndex].className = 'active';
+                dots[currentIndex].className = 'slideshow-dot active';
+            }
+            
+            // رفتن به اسلاید خاص
+            function goToSlide(index) {
+                const slides = slideshowContainer.querySelectorAll('img');
+                const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+                
+                if (!slides.length || !dots.length) return;
+                
+                slides[currentIndex].className = '';
+                dots[currentIndex].className = 'slideshow-dot';
+                
+                currentIndex = index;
+                
+                slides[currentIndex].className = 'active';
+                dots[currentIndex].className = 'slideshow-dot active';
+            }
+            
+            // شروع اسلایدشو خودکار
+            function startSlideshow() {
+                stopSlideshow();
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+            
+            // توقف اسلایدشو خودکار
+            function stopSlideshow() {
+                if (slideInterval) {
+                clearInterval(slideInterval);
+                }
+            }
+            
+            // متوقف کردن اسلایدشو با هاور موس (فقط در دسکتاپ)
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+                slideshowContainer.addEventListener('mouseleave', startSlideshow);
+            }
+            
+            // ایجاد اسلایدشو
+            createSlideshow();
+            console.log('اسلایدشو با موفقیت ایجاد شد.');
+            });
+            </script>
 
         </div>
 
