@@ -915,6 +915,7 @@
             display: block;
         }
 
+
         /* 2استایل‌های اسلایدشو */
         #rhinoplasty-slideshow-2 {
         height: 320px; 
@@ -1029,6 +1030,123 @@
         .slideshow-2-container img.active {
             display: block;
         }
+
+
+        /* 4استایل‌های اسلایدشو */
+        #rhinoplasty-slideshow-4 {
+        height: 320px; 
+        width: 100%; 
+        position: relative; 
+        overflow: hidden; 
+        border-radius: 8px;
+        -webkit-tap-highlight-color: transparent; /* حذف هایلایت آبی در موبایل هنگام تپ */
+        touch-action: pan-y pinch-zoom; /* بهبود عملکرد سوایپ */
+        }
+
+        #rhinoplasty-slideshow-4 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease;
+        display: block; /* اضافه شده برای جلوگیری از فاصله‌های ناخواسته */
+        will-change: opacity; /* بهبود عملکرد انیمیشن */
+        }
+
+        #rhinoplasty-slideshow-4 img.active {
+        opacity: 1;
+        z-index: 1; /* اضافه شده برای اولویت نمایش */
+        }
+
+        .slideshow-4-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.5);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none; /* حذف هایلایت فوکوس */
+        touch-action: manipulation; /* بهبود عملکرد لمس */
+        }
+
+        .slideshow-4-nav:hover {
+        background: rgba(255,255,255,0.8);
+        }
+
+        .nav-prev {
+        left: 10px;
+        }
+
+        .nav-next {
+        right: 10px;
+        }
+
+        .slideshow-4-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+        padding: 5px; /* اضافه شده برای بهبود دسترسی موبایل */
+        }
+
+        .slideshow-4-dot {
+        width: 12px; /* اندازه بزرگتر برای سهولت لمس در موبایل */
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        border: none;
+        cursor: pointer;
+        outline: none; /* حذف هایلایت فوکوس */
+        touch-action: manipulation; /* بهبود عملکرد لمس */
+        margin: 0 4px; /* افزایش فاصله بین دکمه‌ها برای موبایل */
+        }
+
+        .slideshow-4-dot.active {
+        background: white;
+        }
+
+        /* تغییرات خاص موبایل */
+        @media (max-width: 767px) {
+        #rhinoplasty-slideshow-4 {
+            height: 250px; /* کاهش ارتفاع در نمایش موبایل */
+        }
+        
+        .slideshow-4-nav {
+            width: 30px; /* کوچکتر کردن دکمه‌ها در موبایل */
+            height: 30px;
+            font-size: 14px;
+        }
+        
+        .slideshow-4-dot {
+            width: 14px; /* بزرگتر کردن دات‌ها در موبایل برای راحتی لمس */
+            height: 14px;
+        }
+        }
+
+        .slideshow-4-container img {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .slideshow-4-container img.active {
+            display: block;
+        }
+
 
     </style>
 
@@ -1918,12 +2036,12 @@ const Navigation = () => {
     <div class="text-image-container">
 
         <!-- اسلایدشو چپ -->
-        <div class="image-container" id="rhinoplasty-slideshow-2" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
+        <div class="image-container" id="rhinoplasty-slideshow-4" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
 
         <script>
             // کد اسلایدشو را مستقیماً در فایل HTML قرار می‌دهیم
             document.addEventListener('DOMContentLoaded', function() {
-            const slideshowContainer = document.getElementById('rhinoplasty-slideshow-2');
+            const slideshowContainer = document.getElementById('rhinoplasty-slideshow-4');
             
             if (!slideshowContainer) {
                 console.error('کانتینر اسلایدشو پیدا نشد!');
