@@ -7,7 +7,7 @@ const RhinoplastySlideshow = () => {
     "https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg",
     "https://i.ibb.co/yFzmsGyq/780x470.jpg",
     "https://i.ibb.co/cKTxpTwz/14-1-1.jpg",
-    ""
+    "https://i.ibb.co/7xTq3hzY/min.jpg"
   ];
   
   const [currentIndex, setCurrentIndex] = useState(0);
