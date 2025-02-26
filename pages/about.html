@@ -1139,10 +1139,10 @@ const Navigation = () => {
         // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
         // از آدرس‌های معتبر استفاده کنید
         const images = [
-            'https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg',
-            'https://i.ibb.co/yFzmsGyq/780x470.jpg',
-            'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
-            'https://i.ibb.co/7xTq3hzY/min.jpg'                      // اصلاح شده
+        'https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg',
+        'https://i.ibb.co/yFzmsGyq/780x470.jpg',
+        'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
+        'https://i.ibb.co/7xTq3hzY/min.jpg'                      // اصلاح شده
         ];
         
         let currentIndex = 0;
@@ -1167,23 +1167,9 @@ const Navigation = () => {
             });
             
             // اضافه کردن دکمه‌های ناوبری با پشتیبانی از لمس
-
-            const nextButton = document.createElement('button');
-            nextButton.className = 'slideshow-nav nav-next';
-            nextButton.innerHTML = '&#10095;';
-            nextButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            nextSlide();
-            });
-            nextButton.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            nextSlide();
-            });
-            slideshowContainer.appendChild(nextButton);
-            
             const prevButton = document.createElement('button');
             prevButton.className = 'slideshow-nav nav-prev';
-            prevButton.innerHTML = '&#10094;';
+            prevButton.innerHTML = '&#10095;';
             prevButton.addEventListener('click', function(e) {
             e.preventDefault();
             prevSlide();
@@ -1193,6 +1179,19 @@ const Navigation = () => {
             prevSlide();
             });
             slideshowContainer.appendChild(prevButton);
+            
+            const nextButton = document.createElement('button');
+            nextButton.className = 'slideshow-nav nav-next';
+            nextButton.innerHTML = '&#10094;';
+            nextButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            nextSlide();
+            });
+            nextButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            nextSlide();
+            });
+            slideshowContainer.appendChild(nextButton);
             
             // اضافه کردن نقاط نشانگر
             const dotsContainer = document.createElement('div');
