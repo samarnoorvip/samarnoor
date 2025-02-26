@@ -1546,13 +1546,17 @@ const Navigation = () => {
             
             if (!slides.length || !dots.length) return;
             
-            slides[currentIndex].className = '';
-            dots[currentIndex].className = 'slideshow-dot';
+            slides[currentIndex].classList.remove('active');
+            slides[currentIndex].style.opacity = '0';
+            dots[currentIndex].classList.remove('active');
+            dots[currentIndex].style.background = 'rgba(255,255,255,0.5)';
             
             currentIndex = (currentIndex + 1) % slides.length;
             
-            slides[currentIndex].className = 'active';
-            dots[currentIndex].className = 'slideshow-dot active';
+            slides[currentIndex].classList.add('active');
+            slides[currentIndex].style.opacity = '1';
+            dots[currentIndex].classList.add('active');
+            dots[currentIndex].style.background = 'white';
         }
         
         // نمایش اسلاید قبلی
@@ -1562,13 +1566,17 @@ const Navigation = () => {
             
             if (!slides.length || !dots.length) return;
             
-            slides[currentIndex].className = '';
-            dots[currentIndex].className = 'slideshow-dot';
+            slides[currentIndex].classList.remove('active');
+            slides[currentIndex].style.opacity = '0';
+            dots[currentIndex].classList.remove('active');
+            dots[currentIndex].style.background = 'rgba(255,255,255,0.5)';
             
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             
-            slides[currentIndex].className = 'active';
-            dots[currentIndex].className = 'slideshow-dot active';
+            slides[currentIndex].classList.add('active');
+            slides[currentIndex].style.opacity = '1';
+            dots[currentIndex].classList.add('active');
+            dots[currentIndex].style.background = 'white';
         }
         
         // رفتن به اسلاید خاص
@@ -1578,13 +1586,17 @@ const Navigation = () => {
             
             if (!slides.length || !dots.length) return;
             
-            slides[currentIndex].className = '';
-            dots[currentIndex].className = 'slideshow-dot';
+            slides[currentIndex].classList.remove('active');
+            slides[currentIndex].style.opacity = '0';
+            dots[currentIndex].classList.remove('active');
+            dots[currentIndex].style.background = 'rgba(255,255,255,0.5)';
             
             currentIndex = index;
             
-            slides[currentIndex].className = 'active';
-            dots[currentIndex].className = 'slideshow-dot active';
+            slides[currentIndex].classList.add('active');
+            slides[currentIndex].style.opacity = '1';
+            dots[currentIndex].classList.add('active');
+            dots[currentIndex].style.background = 'white';
         }
         
         // شروع اسلایدشو خودکار
