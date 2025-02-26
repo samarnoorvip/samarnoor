@@ -1414,6 +1414,16 @@ const Navigation = () => {
             return;
         }
         
+        // مطمئن شویم کانتینر خالی است
+        slideshowContainer.innerHTML = '';
+        
+        // اضافه کردن ارتفاع مشخص به کانتینر
+        slideshowContainer.style.position = 'relative';
+        slideshowContainer.style.overflow = 'hidden';
+        slideshowContainer.style.width = '100%';
+        slideshowContainer.style.height = '300px'; // ارتفاع مشخص
+        slideshowContainer.style.minHeight = '250px'; // حداقل ارتفاع
+
         // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
         // از آدرس‌های معتبر استفاده کنید
         const images = [
@@ -1435,6 +1445,17 @@ const Navigation = () => {
             img.alt = `ترمیم بینی - تصویر ${index + 1}`;
             img.className = index === 0 ? 'active' : '';
             
+            // اضافه کردن پوزیشن به صورت مستقیم
+            img.style.position = 'absolute';
+            img.style.top = '0';
+            img.style.left = '0';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            img.style.opacity = index === 0 ? '1' : '0';
+            img.style.transition = 'opacity 1s ease';
+            img.style.display = 'block';
+
             // اضافه کردن تست خطا برای تصاویر
             img.onerror = function() {
                 console.error(`خطا در بارگذاری تصویر: ${src}`);
