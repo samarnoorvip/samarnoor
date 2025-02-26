@@ -681,6 +681,26 @@
         animation-delay: 0.4s;
     }
 
+
+
+/* اسلاید شو*/
+
+    .swiper-container {
+    width: 100%;
+    height: 400px; /* ارتفاع اسلاید شو */
+}
+
+.swiper-slide img {
+    width: 100%; /* عرض تصویر باید 100% باشد */
+    height: 100%; /* ارتفاع تصویر باید 100% باشد */
+    object-fit: cover; /* تصاویر به خوبی فیت شوند */
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #fff; /* رنگ دکمه‌های ناوبری */
+}
+
+
     </style>
 
             <script src="https://cdn.tailwindcss.com"></script>
@@ -895,15 +915,29 @@ const Navigation = () => {
 
 
 
+ <!-- متن و تصویر اسلاید شو-->
 
+ <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        loop: true, // برای حلقه‌دار شدن اسلایدها
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        autoplay: {
+            delay: 2500, // مدت زمان بین هر اسلاید
+        },
+    });
+</script>
 
 
  <!-- کد HTML برای بخش جراحی بینی - متن در کنار تصویر -->
 <div class="container">
     <section class="medical-section fade-in-element">
         <div class="text-image-container">
+       
             <!-- متن سمت راست -->
             <div class="text-content">
                 <h2 class="medical-title"> ترميم الأنف  </h2>
@@ -915,12 +949,27 @@ const Navigation = () => {
                         طلب استشارة مجانية <i class="fas fa-comments"></i>
                     </a>
                 </div>
+            </div>
 
-            </div>
+
             <!-- تصویر سمت چپ -->
-            <div class="image-container">
-                <img src="https://i.ibb.co/tMZcXLFv/image.jpg" alt="جراحی بینی">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg" alt="جراحی بینی">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/vxHn5Tjw/768x576.jpg" alt="جراحی بینی">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/cKTxpTwz/14-1-1.jpg" alt="جراحی بینی">
+                    </div>
+                </div>
+                <!-- دکمه‌های ناوبری -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
+            
         </div>
     </section>
 
