@@ -754,38 +754,43 @@ const Navigation = () => {
 
 
 
-            <!-- چیدمان اول: متن در کنار تصویر -->
-            <div class="text-image-container" style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0; align-items: center;">
+    <div class="container">
+        <!-- چیدمان اول: متن در کنار تصویر -->
+        <section class="text-image-section">
+            <div class="text-image-container">
                 <!-- متن سمت راست -->
-                <div class="text-content" style="flex: 1; min-width: 300px;">
-                    <h2 style="color: #333; margin-bottom: 15px; font-size: 24px;">جراحی بینی (رینوپلاستی)</h2>
-                    <p style="line-height: 1.8; text-align: justify; color: #444;">
+                <div class="text-content">
+                    <h2>جراحی بینی (رینوپلاستی)</h2>
+                    <p>
                         جراحی بینی یا رینوپلاستی یکی از رایج‌ترین جراحی‌های زیبایی در ایران است. این جراحی با هدف بهبود ظاهر بینی، اصلاح تناسب آن با سایر اجزای صورت و در برخی موارد رفع مشکلات تنفسی انجام می‌شود. دکتر [نام پزشک] با بیش از [تعداد] سال تجربه در این زمینه، با استفاده از جدیدترین تکنیک‌های جراحی بینی، نتایج طبیعی و متناسب با چهره شما را تضمین می‌کند.
                     </p>
-                    <p style="line-height: 1.8; text-align: justify; color: #444;">
+                    <p>
                         روش‌های نوین جراحی بینی به کار گرفته شده در کلینیک ما، دوره نقاهت کوتاه‌تر و کبودی کمتری را برای بیماران به همراه دارد. مشاوره اولیه رایگان برای بررسی شرایط شما و ارائه بهترین راهکار درمانی در نظر گرفته شده است.
                     </p>
+                    <a href="#consultation" class="btn">درخواست مشاوره رایگان</a>
                 </div>
                 <!-- تصویر سمت چپ -->
-                <div class="image-container" style="flex: 1; min-width: 300px;">
-                    <img src="https://i.ibb.co/tMZcXLFv/image.jpg" alt="جراحی بینی" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <div class="image-container">
+                    <img src="https://i.ibb.co/tMZcXLF/image.jpg" alt="جراحی بینی">
                 </div>
             </div>
+        </section>
 
-            <!-- چیدمان دوم: متن روی تصویر -->
-            <div class="image-text-overlay" style="position: relative; margin: 40px 0; height: 400px; overflow: hidden; border-radius: 10px;">
-                <!-- تصویر پس‌زمینه -->
-                <img src="https://i.ibb.co/vxHn5Tjw/768x576.jpg" alt="نتایج جراحی بینی" style="width: 100%; height: 100%; object-fit: cover;">
-                
-                <!-- متن روی تصویر -->
-                <div class="overlay-text" style="position: absolute; bottom: 0; right: 0; left: 0; background-color: rgba(0,0,0,0.6); color: #fff; padding: 30px; backdrop-filter: blur(3px);">
-                    <h2 style="margin-bottom: 15px; font-size: 24px;">نتایج درخشان جراحی بینی</h2>
-                    <p style="line-height: 1.6; max-width: 80%;">
-                        با انتخاب کلینیک ما، شما از بهترین نتایج جراحی بینی بهره‌مند خواهید شد. تیم متخصص ما با استفاده از تکنیک‌های پیشرفته و تجهیزات مدرن، زیبایی طبیعی را برای شما به ارمغان می‌آورند. برای مشاهده نمونه کارهای ما و نتایج قبل و بعد از جراحی، به گالری تصاویر مراجعه نمایید.
-                    </p>
-                    <a href="gallery.html" style="display: inline-block; margin-top: 15px; background-color: #3a86ff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">مشاهده گالری تصاویر</a>
-                </div>
+        <!-- چیدمان دوم: متن روی تصویر -->
+        <section class="image-text-overlay">
+            <!-- تصویر پس‌زمینه -->
+            <img src="https://i.ibb.co/vxHn5Tj/768x576.jpg" alt="نتایج جراحی بینی">
+            
+            <!-- متن روی تصویر -->
+            <div class="overlay-text">
+                <h2>نتایج درخشان جراحی بینی</h2>
+                <p>
+                    با انتخاب کلینیک ما، شما از بهترین نتایج جراحی بینی بهره‌مند خواهید شد. تیم متخصص ما با استفاده از تکنیک‌های پیشرفته و تجهیزات مدرن، زیبایی طبیعی را برای شما به ارمغان می‌آورند. برای مشاهده نمونه کارهای ما و نتایج قبل و بعد از جراحی، به گالری تصاویر مراجعه نمایید.
+                </p>
+                <a href="gallery.html" class="btn">مشاهده گالری تصاویر</a>
             </div>
+        </section>
+    </div>
 
 
 
