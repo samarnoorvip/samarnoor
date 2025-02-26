@@ -1405,7 +1405,7 @@ const Navigation = () => {
 
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const slideshowContainer = document.getElementById('rhinoplasty-slideshow');
             
             if (!slideshowContainer) {
@@ -1416,7 +1416,14 @@ const Navigation = () => {
             // مطمئن شویم کانتینر خالی است
             slideshowContainer.innerHTML = '';
             
-            // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
+            // اضافه کردن ارتفاع مشخص به کانتینر
+            slideshowContainer.style.position = 'relative';
+            slideshowContainer.style.overflow = 'hidden';
+            slideshowContainer.style.width = '100%';
+            slideshowContainer.style.height = '300px'; // ارتفاع مشخص
+            slideshowContainer.style.minHeight = '250px'; // حداقل ارتفاع
+            
+            // تصاویر اسلایدشو
             const images = [
                 'https://i.ibb.co/RjnwcP9/best-hotel-shrine-Imam-Reza.jpg',
                 'https://i.ibb.co/FzmsGyq/780x470.jpg',
@@ -1429,35 +1436,31 @@ const Navigation = () => {
             
             // ساخت عناصر اسلایدشو
             function createSlideshow() {
-                // اطمینان از وجود پوزیشن صحیح برای کانتینر
-                slideshowContainer.style.position = 'relative';
-                slideshowContainer.style.overflow = 'hidden';
-                
                 // اضافه کردن تصاویر
                 images.forEach((src, index) => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = `ترمیم بینی - تصویر ${index + 1}`;
-                img.className = index === 0 ? 'active' : '';
-                
-                // اضافه کردن پوزیشن به صورت مستقیم
-                img.style.position = 'absolute';
-                img.style.top = '0';
-                img.style.left = '0';
-                img.style.width = '100%';
-                img.style.height = '100%';
-                img.style.objectFit = 'cover';
-                img.style.opacity = index === 0 ? '1' : '0';
-                img.style.transition = 'opacity 1s ease';
-                img.style.display = 'block';
-                
-                // اضافه کردن تست خطا برای تصاویر
-                img.onerror = function() {
-                    console.error(`خطا در بارگذاری تصویر: ${src}`);
-                    this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
-                };
-                
-                slideshowContainer.appendChild(img);
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = `ترمیم بینی - تصویر ${index + 1}`;
+                    img.className = index === 0 ? 'active' : '';
+                    
+                    // اضافه کردن پوزیشن به صورت مستقیم
+                    img.style.position = 'absolute';
+                    img.style.top = '0';
+                    img.style.left = '0';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    img.style.opacity = index === 0 ? '1' : '0';
+                    img.style.transition = 'opacity 1s ease';
+                    img.style.display = 'block';
+                    
+                    // اضافه کردن تست خطا برای تصاویر
+                    img.onerror = function() {
+                        console.error(`خطا در بارگذاری تصویر: ${src}`);
+                        this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
+                    };
+                    
+                    slideshowContainer.appendChild(img);
                 });
                 
                 // اضافه کردن دکمه‌های ناوبری
@@ -1469,14 +1472,21 @@ const Navigation = () => {
                 prevButton.style.left = '10px';
                 prevButton.style.top = '50%';
                 prevButton.style.transform = 'translateY(-50%)';
+                prevButton.style.background = 'rgba(0,0,0,0.3)';
+                prevButton.style.color = 'white';
+                prevButton.style.border = 'none';
+                prevButton.style.borderRadius = '50%';
+                prevButton.style.width = '30px';
+                prevButton.style.height = '30px';
+                prevButton.style.cursor = 'pointer';
                 
                 prevButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                prevSlide();
+                    e.preventDefault();
+                    prevSlide();
                 });
                 prevButton.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                prevSlide();
+                    e.preventDefault();
+                    prevSlide();
                 });
                 slideshowContainer.appendChild(prevButton);
                 
@@ -1488,14 +1498,21 @@ const Navigation = () => {
                 nextButton.style.right = '10px';
                 nextButton.style.top = '50%';
                 nextButton.style.transform = 'translateY(-50%)';
+                nextButton.style.background = 'rgba(0,0,0,0.3)';
+                nextButton.style.color = 'white';
+                nextButton.style.border = 'none';
+                nextButton.style.borderRadius = '50%';
+                nextButton.style.width = '30px';
+                nextButton.style.height = '30px';
+                nextButton.style.cursor = 'pointer';
                 
                 nextButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                nextSlide();
+                    e.preventDefault();
+                    nextSlide();
                 });
                 nextButton.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                nextSlide();
+                    e.preventDefault();
+                    nextSlide();
                 });
                 slideshowContainer.appendChild(nextButton);
                 
@@ -1512,24 +1529,25 @@ const Navigation = () => {
                 dotsContainer.style.padding = '5px';
                 
                 images.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = index === 0 ? 'slideshow-dot active' : 'slideshow-dot';
-                dot.style.width = '12px';
-                dot.style.height = '12px';
-                dot.style.borderRadius = '50%';
-                dot.style.background = index === 0 ? 'white' : 'rgba(255,255,255,0.5)';
-                dot.style.border = 'none';
-                dot.style.margin = '0 4px';
-                
-                dot.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    goToSlide(index);
-                });
-                dot.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    goToSlide(index);
-                });
-                dotsContainer.appendChild(dot);
+                    const dot = document.createElement('button');
+                    dot.className = index === 0 ? 'slideshow-dot active' : 'slideshow-dot';
+                    dot.style.width = '12px';
+                    dot.style.height = '12px';
+                    dot.style.borderRadius = '50%';
+                    dot.style.background = index === 0 ? 'white' : 'rgba(255,255,255,0.5)';
+                    dot.style.border = 'none';
+                    dot.style.margin = '0 4px';
+                    dot.style.cursor = 'pointer';
+                    
+                    dot.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        goToSlide(index);
+                    });
+                    dot.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        goToSlide(index);
+                    });
+                    dotsContainer.appendChild(dot);
                 });
                 
                 slideshowContainer.appendChild(dotsContainer);
@@ -1539,39 +1557,28 @@ const Navigation = () => {
                 let touchEndX = 0;
                 
                 slideshowContainer.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-                stopSlideshow(); // توقف اسلایدشو خودکار هنگام لمس
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopSlideshow(); // توقف اسلایدشو خودکار هنگام لمس
                 }, false);
                 
                 slideshowContainer.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-                startSlideshow(); // شروع مجدد اسلایدشو خودکار پس از لمس
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                    startSlideshow(); // شروع مجدد اسلایدشو خودکار پس از لمس
                 }, false);
                 
                 function handleSwipe() {
-                if (touchEndX < touchStartX - 50) {
-                    // سوایپ به چپ، اسلاید بعدی
-                    nextSlide();
-                } else if (touchEndX > touchStartX + 50) {
-                    // سوایپ به راست، اسلاید قبلی
-                    prevSlide();
-                }
+                    if (touchEndX < touchStartX - 50) {
+                        // سوایپ به چپ، اسلاید بعدی
+                        nextSlide();
+                    } else if (touchEndX > touchStartX + 50) {
+                        // سوایپ به راست، اسلاید قبلی
+                        prevSlide();
+                    }
                 }
                 
                 // شروع اسلایدشو خودکار
                 startSlideshow();
-                
-                // برای اطمینان، مستقیماً چک کنیم که اسلایدشو صحیح نمایش داده شود
-                setTimeout(function() {
-                console.log('وضعیت اسلایدشو بعد از 1 ثانیه:', {
-                    container: slideshowContainer.getBoundingClientRect(),
-                    images: Array.from(slideshowContainer.querySelectorAll('img')).map(img => ({
-                    isVisible: img.classList.contains('active'),
-                    position: img.getBoundingClientRect()
-                    }))
-                });
-                }, 1000);
             }
             
             // نمایش اسلاید بعدی
@@ -1643,7 +1650,7 @@ const Navigation = () => {
             // توقف اسلایدشو خودکار
             function stopSlideshow() {
                 if (slideInterval) {
-                clearInterval(slideInterval);
+                    clearInterval(slideInterval);
                 }
             }
             
@@ -1656,27 +1663,7 @@ const Navigation = () => {
             // ایجاد اسلایدشو
             createSlideshow();
             console.log('اسلایدشو با موفقیت ایجاد شد.');
-            
-            // افزودن یک فانکشن برای بررسی وضعیت اسلایدشو در مرورگر
-            window.checkSlideshow = function() {
-                const container = slideshowContainer.getBoundingClientRect();
-                const images = Array.from(slideshowContainer.querySelectorAll('img'));
-                
-                console.log('وضعیت کانتینر:', {
-                width: container.width,
-                height: container.height,
-                position: getComputedStyle(slideshowContainer).position
-                });
-                
-                console.log('وضعیت تصاویر:', images.map(img => ({
-                src: img.src,
-                visible: getComputedStyle(img).opacity !== '0',
-                position: getComputedStyle(img).position,
-                width: img.offsetWidth,
-                height: img.offsetHeight
-                })));
-            };
-            });
+        });
         </script>    
 
 </section>
