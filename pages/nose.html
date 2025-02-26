@@ -1515,20 +1515,22 @@ const Navigation = () => {
             // شروع اسلایدشو خودکار
             startSlideshow();
             
-            // پشتیبانی از لمس برای اسلایدشو
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            slideshowContainer.addEventListener('touchstart', function(e) {
+        // پشتیبانی از لمس برای اسلایدشو
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slideshowContainer.addEventListener('touchstart', function(e) {
             touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            slideshowContainer.addEventListener('touchend', function(e) {
+            stopSlideshow(); // توقف اسلایدشو خودکار هنگام لمس
+        }, false);
+        
+        slideshowContainer.addEventListener('touchend', function(e) {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
-            }, false);
-            
-            function handleSwipe() {
+            startSlideshow(); // شروع مجدد اسلایدشو خودکار پس از لمس
+        }, false);
+        
+        function handleSwipe() {
             if (touchEndX < touchStartX - 50) {
                 // سوایپ به چپ، اسلاید بعدی
                 nextSlide();
@@ -1536,8 +1538,11 @@ const Navigation = () => {
                 // سوایپ به راست، اسلاید قبلی
                 prevSlide();
             }
-            }
         }
+        
+        // شروع اسلایدشو خودکار
+        startSlideshow();
+    }
         
         // نمایش اسلاید بعدی
         function nextSlide() {
