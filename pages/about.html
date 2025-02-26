@@ -1172,11 +1172,11 @@ const Navigation = () => {
             prevButton.innerHTML = '&#10095;';
             prevButton.addEventListener('click', function(e) {
             e.preventDefault();
-            prevSlide();
+            nextSlide();
             });
             prevButton.addEventListener('touchend', function(e) {
             e.preventDefault();
-            prevSlide();
+            nextSlide();
             });
             slideshowContainer.appendChild(prevButton);
             
@@ -1185,11 +1185,11 @@ const Navigation = () => {
             nextButton.innerHTML = '&#10094;';
             nextButton.addEventListener('click', function(e) {
             e.preventDefault();
-            nextSlide();
+            prevSlide();
             });
             nextButton.addEventListener('touchend', function(e) {
             e.preventDefault();
-            nextSlide();
+            prevSlide();
             });
             slideshowContainer.appendChild(nextButton);
             
