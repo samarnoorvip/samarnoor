@@ -664,6 +664,14 @@
             position: relative;
             background: var(--gradient);
         }
+
+        #rhinoplasty-slideshow {
+            height: 240px; /* تغییر ارتفاع اسلایدشو برای موبایل */
+        }
+
+        #rhinoplasty-slideshow img {
+            object-fit: contain; /* تغییر برای مطمئن شدن از اینکه تصاویر کشیده یا برش نمی‌خورند */
+        }
     }
     
     /* انیمیشن fade-in برای اجزای صفحه */
@@ -694,7 +702,7 @@
         }
 
         #rhinoplasty-slideshow img {
-        position: relative;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
