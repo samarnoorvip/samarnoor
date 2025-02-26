@@ -800,8 +800,8 @@
 
 
 
-        /* 2استایل‌های اسلایدشو */
-        #rhinoplasty-slideshow-2 {
+        /* 3استایل‌های اسلایدشو */
+        #rhinoplasty-slideshow-3 {
         height: 320px; 
         width: 100%; 
         position: relative; 
@@ -811,7 +811,7 @@
         touch-action: pan-y pinch-zoom; /* بهبود عملکرد سوایپ */
         }
 
-        #rhinoplasty-slideshow-2 img {
+        #rhinoplasty-slideshow-3 img {
         position: absolute;
         top: 0;
         left: 0;
@@ -824,12 +824,12 @@
         will-change: opacity; /* بهبود عملکرد انیمیشن */
         }
 
-        #rhinoplasty-slideshow-2 img.active {
+        #rhinoplasty-slideshow-3 img.active {
         opacity: 1;
         z-index: 1; /* اضافه شده برای اولویت نمایش */
         }
 
-        .slideshow-2-nav {
+        .slideshow-3-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -848,7 +848,7 @@
         touch-action: manipulation; /* بهبود عملکرد لمس */
         }
 
-        .slideshow-2-nav:hover {
+        .slideshow-3-nav:hover {
         background: rgba(255,255,255,0.8);
         }
 
@@ -860,7 +860,7 @@
         right: 10px;
         }
 
-        .slideshow-2-dots {
+        .slideshow-3-dots {
         position: absolute;
         bottom: 10px;
         left: 50%;
@@ -871,7 +871,7 @@
         padding: 5px; /* اضافه شده برای بهبود دسترسی موبایل */
         }
 
-        .slideshow-2-dot {
+        .slideshow-3-dot {
         width: 12px; /* اندازه بزرگتر برای سهولت لمس در موبایل */
         height: 12px;
         border-radius: 50%;
@@ -883,38 +883,152 @@
         margin: 0 4px; /* افزایش فاصله بین دکمه‌ها برای موبایل */
         }
 
-        .slideshow-2-dot.active {
+        .slideshow-3-dot.active {
         background: white;
         }
 
         /* تغییرات خاص موبایل */
         @media (max-width: 767px) {
-        #rhinoplasty-slideshow-2 {
+        #rhinoplasty-slideshow-3 {
             height: 250px; /* کاهش ارتفاع در نمایش موبایل */
         }
         
-        .slideshow-2-nav {
+        .slideshow-3-nav {
             width: 30px; /* کوچکتر کردن دکمه‌ها در موبایل */
             height: 30px;
             font-size: 14px;
         }
         
-        .slideshow-2-dot {
+        .slideshow-3-dot {
             width: 14px; /* بزرگتر کردن دات‌ها در موبایل برای راحتی لمس */
             height: 14px;
         }
         }
 
-        .slideshow-2-container img {
+        .slideshow-3-container img {
             display: none;
             width: 100%;
             height: auto;
         }
 
-        .slideshow-2-container img.active {
+        .slideshow-3-container img.active {
             display: block;
         }
 
+        /* 2استایل‌های اسلایدشو */
+        #rhinoplasty-slideshow-3 {
+        height: 320px; 
+        width: 100%; 
+        position: relative; 
+        overflow: hidden; 
+        border-radius: 8px;
+        -webkit-tap-highlight-color: transparent; /* حذف هایلایت آبی در موبایل هنگام تپ */
+        touch-action: pan-y pinch-zoom; /* بهبود عملکرد سوایپ */
+        }
+
+        #rhinoplasty-slideshow-3 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease;
+        display: block; /* اضافه شده برای جلوگیری از فاصله‌های ناخواسته */
+        will-change: opacity; /* بهبود عملکرد انیمیشن */
+        }
+
+        #rhinoplasty-slideshow-3 img.active {
+        opacity: 1;
+        z-index: 1; /* اضافه شده برای اولویت نمایش */
+        }
+
+        .slideshow-3-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.5);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none; /* حذف هایلایت فوکوس */
+        touch-action: manipulation; /* بهبود عملکرد لمس */
+        }
+
+        .slideshow-3-nav:hover {
+        background: rgba(255,255,255,0.8);
+        }
+
+        .nav-prev {
+        left: 10px;
+        }
+
+        .nav-next {
+        right: 10px;
+        }
+
+        .slideshow-3-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+        padding: 5px; /* اضافه شده برای بهبود دسترسی موبایل */
+        }
+
+        .slideshow-3-dot {
+        width: 12px; /* اندازه بزرگتر برای سهولت لمس در موبایل */
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        border: none;
+        cursor: pointer;
+        outline: none; /* حذف هایلایت فوکوس */
+        touch-action: manipulation; /* بهبود عملکرد لمس */
+        margin: 0 4px; /* افزایش فاصله بین دکمه‌ها برای موبایل */
+        }
+
+        .slideshow-3-dot.active {
+        background: white;
+        }
+
+        /* تغییرات خاص موبایل */
+        @media (max-width: 767px) {
+        #rhinoplasty-slideshow-3 {
+            height: 250px; /* کاهش ارتفاع در نمایش موبایل */
+        }
+        
+        .slideshow-3-nav {
+            width: 30px; /* کوچکتر کردن دکمه‌ها در موبایل */
+            height: 30px;
+            font-size: 14px;
+        }
+        
+        .slideshow-3-dot {
+            width: 14px; /* بزرگتر کردن دات‌ها در موبایل برای راحتی لمس */
+            height: 14px;
+        }
+        }
+
+        .slideshow-3-container img {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .slideshow-3-container img.active {
+            display: block;
+        }
 
     </style>
 
@@ -1575,7 +1689,439 @@ const Navigation = () => {
             console.log('اسلایدشو با موفقیت ایجاد شد.');
             });
             </script>
+        </div>
 
+
+</section>
+</div>
+
+ <!-- تجميل الأنف -->
+
+ <div class="container">
+    <section class="medical-section fade-in-element">
+        <div class="text-image-container">
+            <!-- متن سمت راست -->
+            <div class="text-content">
+                <h2 class="medical-title"> تجميل الأنف </h2>
+                <p style="text-align: justify;">عملية تجميل الأنف هي إجراء جراحي يهدف إلى تحسين شكل الأنف وتناسقه مع ملامح الوجه. يتم تعديل حجم الأنف، تصغير فتحات الأنف، أو تحسين شكل الطرف والجسر للحصول على مظهر أكثر جاذبية. تُجرى العملية تحت التخدير، وتتطلب فترة تعافٍ قصيرة قبل ظهور النتائج النهائية.</p>
+                <p style="text-align: justify;">تساعد هذه الجراحة في تعزيز الثقة بالنفس وتحسين التناسق الجمالي للوجه. من المهم استشارة جراح متخصص لضمان تحقيق النتائج المطلوبة بأمان وفعالية.</p>
+                <!-- دکمه وسط‌چین شده -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://wa.me/989150737826?text=تجميل%20الأنف" class="btn" target="_blank" rel="noopener noreferrer">
+                        طلب استشارة مجانية <i class="fas fa-comments"></i>
+                    </a>
+                </div>
+            </div>
+
+        <!-- تصویر سمت راست -->
+        <div class="image-container" id="rhinoplasty-slideshow-3" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
+
+       </div>
+
+
+        <script>
+        // کد اسلایدشو را مستقیماً در فایل HTML قرار می‌دهیم
+        document.addEventListener('DOMContentLoaded', function() {
+        const slideshowContainer = document.getElementById('rhinoplasty-slideshow-3');
+        
+        if (!slideshowContainer) {
+            console.error('کانتینر اسلایدشو پیدا نشد!');
+            return;
+        }
+        
+        // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
+        // از آدرس‌های معتبر استفاده کنید
+        const images = [
+        'https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg',
+        'https://i.ibb.co/yFzmsGyq/780x470.jpg',
+        'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
+        'https://i.ibb.co/7xTq3hzY/min.jpg'                      // اصلاح شده
+        ];
+        
+        let currentIndex = 0;
+        let slideInterval;
+        
+        // ساخت عناصر اسلایدشو
+        function createSlideshow() {
+            // اضافه کردن تصاویر
+            images.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `ترمیم بینی - تصویر ${index + 1}`;
+            img.className = index === 0 ? 'active' : '';
+            
+            // اضافه کردن تست خطا برای تصاویر
+            img.onerror = function() {
+                console.error(`خطا در بارگذاری تصویر: ${src}`);
+                this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
+            };
+            
+            slideshowContainer.appendChild(img);
+            });
+            
+            // اضافه کردن دکمه‌های ناوبری با پشتیبانی از لمس
+            const prevButton = document.createElement('button');
+            prevButton.className = 'slideshow-nav nav-prev';
+            prevButton.innerHTML = '&#10095;';
+            prevButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            nextSlide();
+            });
+            prevButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            nextSlide();
+            });
+            slideshowContainer.appendChild(prevButton);
+            
+            const nextButton = document.createElement('button');
+            nextButton.className = 'slideshow-nav nav-next';
+            nextButton.innerHTML = '&#10094;';
+            nextButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            prevSlide();
+            });
+            nextButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            prevSlide();
+            });
+            slideshowContainer.appendChild(nextButton);
+            
+            // اضافه کردن نقاط نشانگر
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'slideshow-dots';
+            
+            images.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = index === 0 ? 'slideshow-dot active' : 'slideshow-dot';
+            dot.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToSlide(index);
+            });
+            dot.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                goToSlide(index);
+            });
+            dotsContainer.appendChild(dot);
+            });
+            
+            slideshowContainer.appendChild(dotsContainer);
+            
+            // شروع اسلایدشو خودکار
+            startSlideshow();
+            
+            // پشتیبانی از لمس برای اسلایدشو
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slideshowContainer.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            slideshowContainer.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // سوایپ به چپ، اسلاید بعدی
+                nextSlide();
+            } else if (touchEndX > touchStartX + 50) {
+                // سوایپ به راست، اسلاید قبلی
+                prevSlide();
+            }
+            }
+        }
+        
+        // نمایش اسلاید بعدی
+        function nextSlide() {
+            const slides = slideshowContainer.querySelectorAll('img');
+            const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+            
+            if (!slides.length || !dots.length) return;
+            
+            slides[currentIndex].className = '';
+            dots[currentIndex].className = 'slideshow-dot';
+            
+            currentIndex = (currentIndex + 1) % slides.length;
+            
+            slides[currentIndex].className = 'active';
+            dots[currentIndex].className = 'slideshow-dot active';
+        }
+        
+        // نمایش اسلاید قبلی
+        function prevSlide() {
+            const slides = slideshowContainer.querySelectorAll('img');
+            const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+            
+            if (!slides.length || !dots.length) return;
+            
+            slides[currentIndex].className = '';
+            dots[currentIndex].className = 'slideshow-dot';
+            
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            
+            slides[currentIndex].className = 'active';
+            dots[currentIndex].className = 'slideshow-dot active';
+        }
+        
+        // رفتن به اسلاید خاص
+        function goToSlide(index) {
+            const slides = slideshowContainer.querySelectorAll('img');
+            const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+            
+            if (!slides.length || !dots.length) return;
+            
+            slides[currentIndex].className = '';
+            dots[currentIndex].className = 'slideshow-dot';
+            
+            currentIndex = index;
+            
+            slides[currentIndex].className = 'active';
+            dots[currentIndex].className = 'slideshow-dot active';
+        }
+        
+        // شروع اسلایدشو خودکار
+        function startSlideshow() {
+            stopSlideshow();
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+        
+        // توقف اسلایدشو خودکار
+        function stopSlideshow() {
+            if (slideInterval) {
+            clearInterval(slideInterval);
+            }
+        }
+        
+        // متوقف کردن اسلایدشو با هاور موس (فقط در دسکتاپ)
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+            slideshowContainer.addEventListener('mouseleave', startSlideshow);
+        }
+        
+        // ایجاد اسلایدشو
+        createSlideshow();
+        console.log('اسلایدشو با موفقیت ایجاد شد.');
+        });
+        </script>    
+
+</section>
+</div>
+
+
+
+ <!-- جراحة انحراف الأنف -->
+
+ <div class="container">
+    <section class="medical-section fade-in-element">
+    <div class="text-image-container">
+
+        <!-- اسلایدشو چپ -->
+        <div class="image-container" id="rhinoplasty-slideshow-2" style="height: 320px; width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
+
+
+            <!-- متن سمت راست -->
+            <div class="text-content">
+                <h2 class="medical-title"> جراحة انحراف الأنف </h2>
+                <p style="text-align: justify;">جراحة انحراف الأنف هي عملية جراحية تهدف إلى تصحيح انحراف الحاجز الأنفي الذي قد يسبب صعوبة في التنفس أو تأثير على مظهر الأنف. يحدث هذا الانحراف عندما يكون الغضروف أو العظام في الأنف منحرفة أو مشوهة، مما يعوق تدفق الهواء بشكل طبيعي. هذه الجراحة تعتبر من العمليات الشائعة التي يجريها أطباء الأنف والأذن والحنجرة أو جراحو التجميل.
+                    تتم الجراحة عادة تحت تأثير التخدير العام أو الموضعي، ويقوم الجراح بإعادة ترتيب العظام والغضاريف لتصحيح الانحراف وتحسين وظيفة الأنف. </p>
+                <p style="text-align: justify;">في بعض الحالات، قد يتطلب الأمر إجراء عملية تجميلية لتحسين مظهر الأنف بجانب تصحيح انحرافه.
+                    من المهم متابعة تعليمات الطبيب بعد الجراحة لضمان الشفاء السليم والنتائج المرجوة. تساعد جراحة انحراف الأنف في تحسين التنفس بشكل كبير وتعزيز الراحة العامة للمريض، بالإضافة إلى تحسين المظهر الجمالي للأنف.</p>
+                <!-- دکمه وسط‌چین شده -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://wa.me/989150737826?text=جراحة%20انحراف%20الأنف" class="btn" target="_blank" rel="noopener noreferrer"> طلب استشارة مجانية حول جراحة انحراف الأنف <i class="fas fa-comments"></i></a>
+                    </a>
+                </div>
+            </div>
+
+
+        <script>
+            // کد اسلایدشو را مستقیماً در فایل HTML قرار می‌دهیم
+            document.addEventListener('DOMContentLoaded', function() {
+            const slideshowContainer = document.getElementById('rhinoplasty-slideshow-2');
+            
+            if (!slideshowContainer) {
+                console.error('کانتینر اسلایدشو پیدا نشد!');
+                return;
+            }
+            
+            // تصاویر اسلایدشو - آدرس‌ها را با تصاویر واقعی خود جایگزین کنید
+            // از آدرس‌های معتبر استفاده کنید
+            const images = [
+            'https://i.ibb.co/6Rjnwcp9/best-hotel-shrine-Imam-Reza.jpg',
+            'https://i.ibb.co/vxHn5Tjw/768x576.jpg',
+            'https://i.ibb.co/tMZcXLFv/image.jpg',
+            'https://i.ibb.co/s9JGcp5v/image.jpg'                      // اصلاح شده
+            ];
+            
+            let currentIndex = 0;
+            let slideInterval;
+            
+            // ساخت عناصر اسلایدشو
+            function createSlideshow() {
+                // اضافه کردن تصاویر
+                images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `ترمیم بینی - تصویر ${index + 1}`;
+                img.className = index === 0 ? 'active' : '';
+                
+                // اضافه کردن تست خطا برای تصاویر
+                img.onerror = function() {
+                    console.error(`خطا در بارگذاری تصویر: ${src}`);
+                    this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
+                };
+                
+                slideshowContainer.appendChild(img);
+                });
+                
+                // اضافه کردن دکمه‌های ناوبری با پشتیبانی از لمس
+                const prevButton = document.createElement('button');
+                prevButton.className = 'slideshow-nav nav-prev';
+                prevButton.innerHTML = '&#10095;';
+                prevButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextSlide();
+                });
+                prevButton.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                nextSlide();
+                });
+                slideshowContainer.appendChild(prevButton);
+                
+                const nextButton = document.createElement('button');
+                nextButton.className = 'slideshow-nav nav-next';
+                nextButton.innerHTML = '&#10094;';
+                nextButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevSlide();
+                });
+                nextButton.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                prevSlide();
+                });
+                slideshowContainer.appendChild(nextButton);
+                
+                // اضافه کردن نقاط نشانگر
+                const dotsContainer = document.createElement('div');
+                dotsContainer.className = 'slideshow-dots';
+                
+                images.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = index === 0 ? 'slideshow-dot active' : 'slideshow-dot';
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    goToSlide(index);
+                });
+                dot.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+                });
+                
+                slideshowContainer.appendChild(dotsContainer);
+                
+                // شروع اسلایدشو خودکار
+                startSlideshow();
+                
+                // پشتیبانی از لمس برای اسلایدشو
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                slideshowContainer.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                slideshowContainer.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                }, false);
+                
+                function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    // سوایپ به چپ، اسلاید بعدی
+                    nextSlide();
+                } else if (touchEndX > touchStartX + 50) {
+                    // سوایپ به راست، اسلاید قبلی
+                    prevSlide();
+                }
+                }
+            }
+            
+            // نمایش اسلاید بعدی
+            function nextSlide() {
+                const slides = slideshowContainer.querySelectorAll('img');
+                const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+                
+                if (!slides.length || !dots.length) return;
+                
+                slides[currentIndex].className = '';
+                dots[currentIndex].className = 'slideshow-dot';
+                
+                currentIndex = (currentIndex + 1) % slides.length;
+                
+                slides[currentIndex].className = 'active';
+                dots[currentIndex].className = 'slideshow-dot active';
+            }
+            
+            // نمایش اسلاید قبلی
+            function prevSlide() {
+                const slides = slideshowContainer.querySelectorAll('img');
+                const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+                
+                if (!slides.length || !dots.length) return;
+                
+                slides[currentIndex].className = '';
+                dots[currentIndex].className = 'slideshow-dot';
+                
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                
+                slides[currentIndex].className = 'active';
+                dots[currentIndex].className = 'slideshow-dot active';
+            }
+            
+            // رفتن به اسلاید خاص
+            function goToSlide(index) {
+                const slides = slideshowContainer.querySelectorAll('img');
+                const dots = slideshowContainer.querySelectorAll('.slideshow-dot');
+                
+                if (!slides.length || !dots.length) return;
+                
+                slides[currentIndex].className = '';
+                dots[currentIndex].className = 'slideshow-dot';
+                
+                currentIndex = index;
+                
+                slides[currentIndex].className = 'active';
+                dots[currentIndex].className = 'slideshow-dot active';
+            }
+            
+            // شروع اسلایدشو خودکار
+            function startSlideshow() {
+                stopSlideshow();
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+            
+            // توقف اسلایدشو خودکار
+            function stopSlideshow() {
+                if (slideInterval) {
+                clearInterval(slideInterval);
+                }
+            }
+            
+            // متوقف کردن اسلایدشو با هاور موس (فقط در دسکتاپ)
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+                slideshowContainer.addEventListener('mouseleave', startSlideshow);
+            }
+            
+            // ایجاد اسلایدشو
+            createSlideshow();
+            console.log('اسلایدشو با موفقیت ایجاد شد.');
+            });
+            </script>
         </div>
 
 
@@ -1598,7 +2144,6 @@ const Navigation = () => {
 
 </section>
 </div>
-
 
 <!-- اضافه کردن کتابخانه Font Awesome برای آیکون‌ها -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -1674,9 +2219,9 @@ const Navigation = () => {
                 <p><i class="fab fa-whatsapp"></i> واتساب: +989150737826</p>
                 <p><i class="fab fa-instagram"></i> انستجرام: samarnoor.vip</p>
                 <div class="social-icons">
-                    <a href="https://wa.me/989150737826"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.instagram.com/samarnoor.vip"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/samarnoorvip"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/989150737826"><i class="fab fa-whatsapp" target="_blank" rel="noopener noreferrer"></i></a>
+                    <a href="https://www.instagram.com/samarnoor.vip"><i class="fab fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+                    <a href="https://t.me/samarnoorvip"><i class="fab fa-telegram" target="_blank" rel="noopener noreferrer"></i></a>
                 </div>
             </div>
         </div>
