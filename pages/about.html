@@ -511,215 +511,175 @@
             .desktop-menu {
                 display: none;
             }
-            .image-text-overlay {
-                height: auto;
-                min-height: 400px;
-            }
-            
-            .overlay-text {
-                position: relative;
-                padding: 25px 20px;
-            }
-            
-            .overlay-text p {
-                max-width: 100%;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
         }
 
 
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Tahoma', 'Vazir', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #f8f9fa;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-            position: relative;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 3px;
-        }
-        
-        p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            text-align: justify;
-            color: var(--text-medium);
-        }
-        
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: var(--transition-normal);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #2a75f3;
-            box-shadow: var(--shadow-medium);
-            transform: translateY(-2px);
-        }
-        
-        /* چیدمان اول: متن در کنار تصویر */
-        .text-image-section {
-            margin: 50px 0;
-        }
-        
+
+
+
+            /* استایل برای بخش جراحی بینی */
+    .medical-section {
+        margin: 60px 0;
+    }
+    
+    .text-image-container {
+        display: flex;
+        flex-direction: row-reverse; /* برای RTL */
+        flex-wrap: wrap;
+        gap: 30px;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+        align-items: center;
+    }
+    
+    .text-image-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(26, 54, 93, 0.2);
+    }
+    
+    .text-content {
+        flex: 1;
+        min-width: 300px;
+    }
+    
+    .image-container {
+        flex: 1;
+        min-width: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .image-container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    
+    .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    
+    .image-container:hover img {
+        transform: scale(1.05);
+    }
+    
+    .medical-title {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        position: relative;
+        padding-right: 15px;
+    }
+    
+    .medical-title::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 10px;
+        height: 70%;
+        width: 4px;
+        background: var(--gradient);
+        border-radius: 2px;
+    }
+    
+    /* استایل برای بخش نتایج جراحی - متن روی تصویر */
+    .image-text-overlay {
+        position: relative;
+        height: 450px;
+        overflow: hidden;
+        border-radius: 15px;
+        margin: 50px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .image-text-overlay:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(26, 54, 93, 0.2);
+    }
+    
+    .image-text-overlay img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    
+    .image-text-overlay:hover img {
+        transform: scale(1.05);
+    }
+    
+    .overlay-text {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: linear-gradient(to top, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.7), transparent);
+        color: white;
+        padding: 40px 30px;
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .overlay-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .overlay-btn {
+        background: white;
+        color: var(--primary);
+        border: none;
+    }
+    
+    .overlay-btn:hover {
+        background: var(--accent);
+        color: white;
+    }
+    
+    /* ریسپانسیو */
+    @media (max-width: 768px) {
         .text-image-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition-normal);
+            flex-direction: column;
         }
         
-        .text-image-container:hover {
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .text-content {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .image-container {
-            flex: 1;
-            min-width: 300px;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            transition: var(--transition-normal);
-        }
-        
-        .image-container img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            transition: var(--transition-normal);
-        }
-        
-        .image-container:hover img {
-            transform: scale(1.03);
-        }
-        
-        /* چیدمان دوم: متن روی تصویر */
         .image-text-overlay {
-            position: relative;
-            margin: 60px 0;
-            height: 450px;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
-            transition: var(--transition-normal);
-        }
-        
-        .image-text-overlay:hover {
-            box-shadow: var(--shadow-medium);
+            height: auto;
         }
         
         .image-text-overlay img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-normal);
-        }
-        
-        .image-text-overlay:hover img {
-            transform: scale(1.05);
+            height: 250px;
         }
         
         .overlay-text {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), transparent);
-            color: var(--text-light);
-            padding: 40px 30px;
-            backdrop-filter: blur(3px);
-            transition: var(--transition-normal);
+            position: relative;
+            background: var(--gradient);
         }
-        
-        .overlay-text h2 {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-        
-        .overlay-text h2::after {
-            background-color: var(--text-light);
-        }
-        
-        .overlay-text p {
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 80%;
-        }
-
-
-        /* متن و تصویر */
-
-
-        .text-image-container, .image-text-overlay {
-            margin: 40px 200px;    /* چپ، بالا و پایین و راست، چپ و راست*/
-        }
-
-        .text-content {
-            padding: 20px;    /* فاصله داخلی برای متن*/
-        }
-
-        .image-container img {
-            padding: 0px;   /* فاصله داخلی بین تصویر و حاشیه آن*/
-            margin: 0px;   /* فاصله بیرونی بین تصویر و عناصر اطرافش*/ 
-            border-radius: 20px;   /* گوشه‌های تصویر را گرد می‌کند*/
-        }
-
-        .text-image-container {
-            gap: 10px; /* افزایش فاصله بین متن و تصویر */
-        }
-
-        
+    }
+    
+    /* انیمیشن fade-in برای اجزای صفحه */
+    .fade-in-element {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1s ease forwards;
+    }
+    
+    .delay-200 {
+        animation-delay: 0.2s;
+    }
+    
+    .delay-400 {
+        animation-delay: 0.4s;
+    }
 
     </style>
 
@@ -940,43 +900,102 @@ const Navigation = () => {
 
 
 
-    <div class="container">
-        <!-- چیدمان اول: متن در کنار تصویر -->
-        <section class="text-image-section">
-            <div class="text-image-container">
-                <!-- متن سمت راست -->
-                <div class="text-content">
-                    <h2>جراحی بینی (رینوپلاستی)</h2>
-                    <p>
-                        جراحی بینی یا رینوپلاستی یکی از رایج‌ترین جراحی‌های زیبایی در ایران است. این جراحی با هدف بهبود ظاهر بینی، اصلاح تناسب آن با سایر اجزای صورت و در برخی موارد رفع مشکلات تنفسی انجام می‌شود. دکتر [نام پزشک] با بیش از [تعداد] سال تجربه در این زمینه، با استفاده از جدیدترین تکنیک‌های جراحی بینی، نتایج طبیعی و متناسب با چهره شما را تضمین می‌کند.
-                    </p>
-                    <p>
-                        روش‌های نوین جراحی بینی به کار گرفته شده در کلینیک ما، دوره نقاهت کوتاه‌تر و کبودی کمتری را برای بیماران به همراه دارد. مشاوره اولیه رایگان برای بررسی شرایط شما و ارائه بهترین راهکار درمانی در نظر گرفته شده است.
-                    </p>
-                    <a href="#consultation" class="btn">درخواست مشاوره رایگان</a>
-                </div>
-                <!-- تصویر سمت چپ -->
-                <div class="image-container">
-                    <img src="https://i.ibb.co/tMZcXLFv/image.jpg" alt="جراحی بینی">
-                </div>
-            </div>
-        </section>
-
-        <!-- چیدمان دوم: متن روی تصویر -->
-        <section class="image-text-overlay">
-            <!-- تصویر پس‌زمینه -->
-            <img src="https://i.ibb.co/vxHn5Tjw/768x576.jpg" alt="نتایج جراحی بینی">
-            
-            <!-- متن روی تصویر -->
-            <div class="overlay-text">
-                <h2>نتایج درخشان جراحی بینی</h2>
+ <!-- کد HTML برای بخش جراحی بینی - متن در کنار تصویر -->
+<div class="container">
+    <section class="medical-section fade-in-element">
+        <div class="text-image-container">
+            <!-- متن سمت راست -->
+            <div class="text-content">
+                <h2 class="medical-title">جراحی بینی (رینوپلاستی)</h2>
                 <p>
-                    با انتخاب کلینیک ما، شما از بهترین نتایج جراحی بینی بهره‌مند خواهید شد. تیم متخصص ما با استفاده از تکنیک‌های پیشرفته و تجهیزات مدرن، زیبایی طبیعی را برای شما به ارمغان می‌آورند. برای مشاهده نمونه کارهای ما و نتایج قبل و بعد از جراحی، به گالری تصاویر مراجعه نمایید.
+                    جراحی بینی یا رینوپلاستی یکی از رایج‌ترین جراحی‌های زیبایی در ایران است. این جراحی با هدف بهبود ظاهر بینی، اصلاح تناسب آن با سایر اجزای صورت و در برخی موارد رفع مشکلات تنفسی انجام می‌شود. دکتر [نام پزشک] با بیش از [تعداد] سال تجربه در این زمینه، با استفاده از جدیدترین تکنیک‌های جراحی بینی، نتایج طبیعی و متناسب با چهره شما را تضمین می‌کند.
                 </p>
-                <a href="gallery.html" class="btn">مشاهده گالری تصاویر</a>
+                <p>
+                    روش‌های نوین جراحی بینی به کار گرفته شده در کلینیک ما، دوره نقاهت کوتاه‌تر و کبودی کمتری را برای بیماران به همراه دارد. مشاوره اولیه رایگان برای بررسی شرایط شما و ارائه بهترین راهکار درمانی در نظر گرفته شده است.
+                </p>
+                <a href="#appointment" class="btn">درخواست مشاوره رایگان <i class="fas fa-calendar-check"></i></a>
             </div>
-        </section>
-    </div>
+            <!-- تصویر سمت چپ -->
+            <div class="image-container">
+                <img src="https://i.ibb.co/tMZcXLFv/image.jpg" alt="جراحی بینی">
+            </div>
+        </div>
+    </section>
+
+    <!-- کد HTML برای بخش نتایج جراحی - متن روی تصویر -->
+    <section class="image-text-overlay fade-in-element delay-200">
+        <!-- تصویر پس‌زمینه -->
+        <img src="https://i.ibb.co/s9JGcp5v/image.jpg" alt="نتایج جراحی بینی">
+        
+        <!-- متن روی تصویر -->
+        <div class="overlay-text">
+            <h2 class="overlay-title">نتایج درخشان جراحی بینی</h2>
+            <p>
+                با انتخاب کلینیک ما، شما از بهترین نتایج جراحی بینی بهره‌مند خواهید شد. تیم متخصص ما با استفاده از تکنیک‌های پیشرفته و تجهیزات مدرن، زیبایی طبیعی را برای شما به ارمغان می‌آورند. برای مشاهده نمونه کارهای ما و نتایج قبل و بعد از جراحی، به گالری تصاویر مراجعه نمایید.
+            </p>
+            <a href="gallery.html" class="btn overlay-btn">مشاهده گالری تصاویر <i class="fas fa-images"></i></a>
+        </div>
+    </section>
+    
+    <!-- بخش فرم تماس برای درخواست مشاوره -->
+    <section id="appointment" class="card fade-in-element delay-400">
+        <h2 class="section-title">درخواست مشاوره رایگان</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">نام و نام خانوادگی</label>
+                <input type="text" id="name" class="form-control" placeholder="نام خود را وارد کنید">
+            </div>
+            <div class="form-group">
+                <label for="phone">شماره تماس</label>
+                <input type="tel" id="phone" class="form-control" placeholder="شماره تماس خود را وارد کنید">
+            </div>
+            <div class="form-group">
+                <label for="service">نوع خدمات مورد نظر</label>
+                <select id="service" class="form-control">
+                    <option value="">انتخاب کنید</option>
+                    <option value="rhinoplasty">جراحی بینی (رینوپلاستی)</option>
+                    <option value="consultation">مشاوره اولیه</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">توضیحات (اختیاری)</label>
+                <textarea id="message" class="form-control" placeholder="هرگونه توضیحات اضافی یا سوالی که دارید را بنویسید"></textarea>
+            </div>
+            <button type="submit" class="btn">ارسال درخواست <i class="fas fa-paper-plane"></i></button>
+        </form>
+    </section>
+</div>
+
+<!-- اضافه کردن کتابخانه Font Awesome برای آیکون‌ها -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- اسکریپت برای انیمیشن fade-in هنگام اسکرول -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeElements = document.querySelectorAll('.fade-in-element');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                // اگر المان در دید کاربر قرار بگیرد
+                if(position.top < window.innerHeight) {
+                    element.style.animation = 'fadeIn 1s ease forwards';
+                    if(element.classList.contains('delay-200')) {
+                        element.style.animationDelay = '0.2s';
+                    } else if(element.classList.contains('delay-400')) {
+                        element.style.animationDelay = '0.4s';
+                    }
+                }
+            });
+        }
+        
+        // اجرای اولیه
+        checkFade();
+        
+        // اجرا هنگام اسکرول
+        window.addEventListener('scroll', checkFade);
+    });
+</script>
 
 
 
