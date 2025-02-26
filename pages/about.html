@@ -1167,19 +1167,7 @@ const Navigation = () => {
             });
             
             // اضافه کردن دکمه‌های ناوبری با پشتیبانی از لمس
-            const prevButton = document.createElement('button');
-            prevButton.className = 'slideshow-nav nav-prev';
-            prevButton.innerHTML = '&#10094;';
-            prevButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            prevSlide();
-            });
-            prevButton.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            prevSlide();
-            });
-            slideshowContainer.appendChild(prevButton);
-            
+
             const nextButton = document.createElement('button');
             nextButton.className = 'slideshow-nav nav-next';
             nextButton.innerHTML = '&#10095;';
@@ -1192,6 +1180,19 @@ const Navigation = () => {
             nextSlide();
             });
             slideshowContainer.appendChild(nextButton);
+            
+            const prevButton = document.createElement('button');
+            prevButton.className = 'slideshow-nav nav-prev';
+            prevButton.innerHTML = '&#10094;';
+            prevButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            prevSlide();
+            });
+            prevButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            prevSlide();
+            });
+            slideshowContainer.appendChild(prevButton);
             
             // اضافه کردن نقاط نشانگر
             const dotsContainer = document.createElement('div');
