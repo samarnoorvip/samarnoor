@@ -1153,6 +1153,134 @@
             display: block;
         }
 
+        /* استایل‌های جدول قیمت */
+        .pricing-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        }
+
+        .pricing-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        }
+
+        .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        }
+
+        .basic-header {
+        background-color: #4dabf7;
+        color: white;
+        }
+
+        .standard-header {
+        background-color: #339af0;
+        color: white;
+        }
+
+        .premium-header {
+        background-color: #1c7ed6;
+        color: white;
+        }
+
+        .card-title {
+        font-size: 24px;
+        margin: 0;
+        padding: 10px 0;
+        }
+
+        .price {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 10px 0;
+        }
+
+        .features {
+        padding: 20px;
+        flex-grow: 1;
+        }
+
+        .feature {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 16px;
+        }
+
+        .feature-icon {
+        margin-left: 10px;
+        color: #339af0;
+        font-weight: bold;
+        }
+
+        .card-footer {
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid #eee;
+        }
+
+        .order-button {
+        background-color: #339af0;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+        }
+
+        .order-button:hover {
+        background-color: #1c7ed6;
+        }
+
+        .highlight {
+        position: relative;
+        }
+
+        .highlight:before {
+        content: "العرض المميز";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #fcc419;
+        color: #1a1a1a;
+        padding: 5px 10px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 4px;
+        }
+
+        /* استایل‌های ریسپانسیو برای نمایشگرهای کوچک */
+        @media (max-width: 768px) {
+        .pricing-container {
+            flex-direction: column;
+        }
+        
+        .pricing-card {
+            margin-bottom: 20px;
+        }
+        }
+
 
     </style>
 
@@ -2386,6 +2514,121 @@ const Navigation = () => {
             });
             </script>  
 
+            <div class="pricing-container">
+                <!-- الباقة الأساسية -->
+                <div class="pricing-card">
+                <div class="card-header basic-header">
+                    <h2 class="card-title">الباقة الأساسية</h2>
+                    <div class="price">99.000 ريال</div>
+                    <p>مناسبة للمستخدمين المبتدئين</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>الوصول إلى 5 قوالب أساسية</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>دعم البريد الإلكتروني</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>تحديثات مجانية</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>1 جيجابايت مساحة استضافة</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>مدة الصلاحية: سنة واحدة</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="order-button">طلب</button>
+                </div>
+                </div>
+                
+                <!-- الباقة القياسية -->
+                <div class="pricing-card highlight">
+                <div class="card-header standard-header">
+                    <h2 class="card-title">الباقة القياسية</h2>
+                    <div class="price">199.000 ريال</div>
+                    <p>مناسبة للشركات الصغيرة</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>الوصول إلى 15 قالبًا احترافيًا</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>دعم الهاتف والبريد الإلكتروني</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>تحديثات مجانية</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>5 جيجابايت مساحة استضافة</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>إضافات حصرية</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>مدة الصلاحية: سنتان</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="order-button">طلب</button>
+                </div>
+                </div>
+                
+                <!-- الباقة المميزة -->
+                <div class="pricing-card">
+                <div class="card-header premium-header">
+                    <h2 class="card-title">الباقة المميزة</h2>
+                    <div class="price">349.000 ريال</div>
+                    <p>مناسبة للشركات الكبيرة</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>الوصول إلى جميع القوالب</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>دعم على مدار الساعة 24/7</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>تحديثات ذات أولوية</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>20 جيجابايت مساحة استضافة</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>إضافات حصرية</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>تحسين محركات البحث المتقدم</span>
+                    </div>
+                    <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>مدة الصلاحية: غير محدودة</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="order-button">طلب</button>
+                </div>
+                </div>
+            </div>
 
 
     <!-- کد HTML برای بخش نتایج جراحی - متن روی تصویر -->
@@ -2403,7 +2646,6 @@ const Navigation = () => {
 
         </section>      
         
-
 
 </section>
 </div>
