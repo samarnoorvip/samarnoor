@@ -1161,7 +1161,7 @@
         justify-content: center;
         max-width: 1000px;
         width: 100%;
-        margin: 0 auto;
+        margin: 50px auto 0; /* افزایش فاصله از بالا */
         }
 
         .pricing-card {
@@ -1173,6 +1173,8 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        max-height: 500px; /* محدود کردن حداکثر ارتفاع */
+
         }
 
         .pricing-card:hover {
@@ -1181,7 +1183,7 @@
         }
 
         .card-header {
-        padding: 20px;
+        padding: 10px;  /* کاهش پدینگ */
         text-align: center;
         border-bottom: 1px solid #eee;
         }
@@ -1202,27 +1204,28 @@
         }
 
         .card-title {
-        font-size: 24px;
+        font-size: 20px; /* کاهش اندازه فونت */
         margin: 0;
-        padding: 10px 0;
+        padding: 5px 0;
         }
 
         .price {
-        font-size: 36px;
+        font-size: 28px;  /* کاهش اندازه فونت */
         font-weight: bold;
-        margin: 10px 0;
+        margin: 5px 0;
         }
 
         .features {
-        padding: 20px;
+        padding: 10px;  /* کاهش پدینگ */
         flex-grow: 1;
+        overflow-y: auto; /* اضافه کردن اسکرول در صورت نیاز */
         }
 
         .feature {
         display: flex;
         align-items: center;
-        margin-bottom: 15px;
-        font-size: 16px;
+        margin-bottom: 8px; /* کاهش حاشیه */
+        font-size: 14px; /* کاهش اندازه فونت */
         }
 
         .feature-icon {
@@ -1232,7 +1235,7 @@
         }
 
         .card-footer {
-        padding: 20px;
+        padding: 10px; /* کاهش پدینگ */
         text-align: center;
         border-top: 1px solid #eee;
         }
@@ -1242,8 +1245,8 @@
         color: white;
         border: none;
         border-radius: 50px;
-        padding: 12px 30px;
-        font-size: 16px;
+        padding: 8px 20px;
+        font-size: 14px;
         cursor: pointer;
         transition: background-color 0.3s;
         width: 100%;
