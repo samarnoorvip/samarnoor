@@ -2616,60 +2616,7 @@ const Navigation = () => {
             </script>  
 
 
-<script>
-// اسکریپت برای فعالسازی انیمیشن Fade-In در زمان اسکرول
-document.addEventListener('DOMContentLoaded', function() {
-    // فعال کردن انیمیشن fade-in برای المنت‌های fade-in-element
-    const fadeElements = document.querySelectorAll('.fade-in-element');
-    
-    function checkFade() {
-        fadeElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight - 50) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    }
-    
-    // اجرای اولیه برای المنت‌هایی که از ابتدا در صفحه نمایش هستند
-    checkFade();
-    
-    // اضافه کردن رویداد اسکرول برای انیمیشن‌ها
-    window.addEventListener('scroll', checkFade);
-    
-    // هاور افکت پیشرفته برای کارت‌های قیمت
-    const pricingCards = document.querySelectorAll('.pricing-card');
-    
-    pricingCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            // افزودن کلاس hover به کارت فعلی
-            this.classList.add('card-hover');
-            
-            // کمرنگ کردن سایر کارت‌ها
-            pricingCards.forEach(otherCard => {
-                if (otherCard !== this) {
-                    otherCard.style.opacity = '0.7';
-                    otherCard.style.transform = 'scale(0.98)';
-                }
-            });
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            // حذف کلاس hover از کارت فعلی
-            this.classList.remove('card-hover');
-            
-            // بازگرداندن حالت عادی به تمام کارت‌ها
-            pricingCards.forEach(otherCard => {
-                otherCard.style.opacity = '1';
-                otherCard.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    });
-});
-</script>
+
 
 <!-- بخش پکیج‌های قیمتی -->
 <section class="pricing-section">
