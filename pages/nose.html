@@ -1157,6 +1157,28 @@
 
 
         /* استایل‌های پکیج‌های قیمتی */
+
+        /* Animation definitions */
+        .fade-in-element {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        .fade-in-element.visible {
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+        /* Delay classes */
+        .delay-200 {
+        transition-delay: 0.2s;
+        }
+
+        .delay-400 {
+        transition-delay: 0.4s;
+        }
+
         .pricing-section {
             padding: 60px 0;
             margin: 40px 0;
@@ -1215,12 +1237,24 @@
             transition: all 0.4s ease;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             border: 1px solid #eaeaea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(26, 54, 93, 0.15);
-        }
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhance popular card */
+.pricing-card.popular {
+  position: relative;
+  z-index: 2;
+  transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+  transform: scale(1.05) translateY(-10px);
+}
 
         .pricing-header {
             padding: 30px 25px;
@@ -1377,6 +1411,46 @@
                 margin-bottom: 20px;
             }
         }
+
+        /* استایل بخش اصلی قیمت‌گذاری */
+.pricing-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* چیدمان کارت‌های قیمت */
+.pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* استایل کارت قیمت */
+.pricing-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    direction: rtl;
+    text-align: right;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* استایل بر
 
         
 
@@ -2615,8 +2689,34 @@ const Navigation = () => {
             });
             </script>  
 
-
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all elements with the fade-in-element class
+    const elements = document.querySelectorAll('.fade-in-element');
+    
+    // Create the Intersection Observer
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        // If element is in view
+        if (entry.isIntersecting) {
+          // Add the visible class to trigger the animation
+          entry.target.classList.add('visible');
+          // Stop observing the element after it's animated
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null, // Use the viewport as the root
+      threshold: 0.2, // Trigger when 20% of the element is visible
+      rootMargin: '0px 0px -50px 0px' // Adjust the bottom margin to trigger earlier
+    });
+    
+    // Start observing each fade-in element
+    elements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
 
 <!-- بخش پکیج‌های قیمتی -->
 <section class="pricing-section">
