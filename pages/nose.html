@@ -1154,6 +1154,230 @@
         }
 
 
+
+
+        /* استایل‌های پکیج‌های قیمتی */
+        .pricing-section {
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+
+        .pricing-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pricing-title h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .pricing-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .pricing-title p {
+            color: var(--dark);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 0;
+            width: 100%;
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eaeaea;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(26, 54, 93, 0.15);
+        }
+
+        .pricing-header {
+            padding: 30px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .pricing-card.popular .pricing-header {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            left: -30px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .pricing-card.popular .package-name {
+            color: white;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pricing-card.popular .price {
+            color: white;
+        }
+
+        .price .currency {
+            font-size: 1rem;
+            margin-right: 5px;
+            align-self: flex-start;
+            margin-top: 8px;
+        }
+
+        .price .period {
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-right: 5px;
+            align-self: flex-end;
+            opacity: 0.8;
+        }
+
+        .pricing-features {
+            padding: 30px 25px;
+            list-style: none;
+        }
+
+        .pricing-feature {
+            margin-bottom: 15px;
+            padding-right: 30px;
+            position: relative;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .pricing-feature::before {
+            content: '\2713';
+            position: absolute;
+            right: 0;
+            top: 2px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .pricing-feature.inactive {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        .pricing-feature.inactive::before {
+            content: '\2715';
+            color: #ccc;
+        }
+
+        .pricing-feature.highlight {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .pricing-feature.highlight::before {
+            color: var(--accent);
+        }
+
+        .pricing-footer {
+            padding: 20px 25px 30px;
+            text-align: center;
+        }
+
+        .pricing-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: transparent;
+            color: var(--primary);
+            font-weight: 500;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .pricing-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 54, 93, 0.2);
+        }
+
+        .pricing-card.popular .pricing-btn {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .pricing-card.popular .pricing-btn:hover {
+            background: var(--accent);
+            box-shadow: 0 5px 15px rgba(239, 131, 84, 0.3);
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
         
 
     </style>
@@ -2392,7 +2616,145 @@ const Navigation = () => {
             </script>  
 
 
+<script>
+// اسکریپت برای فعالسازی انیمیشن Fade-In در زمان اسکرول
+document.addEventListener('DOMContentLoaded', function() {
+    // فعال کردن انیمیشن fade-in برای المنت‌های fade-in-element
+    const fadeElements = document.querySelectorAll('.fade-in-element');
+    
+    function checkFade() {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 50) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+    
+    // اجرای اولیه برای المنت‌هایی که از ابتدا در صفحه نمایش هستند
+    checkFade();
+    
+    // اضافه کردن رویداد اسکرول برای انیمیشن‌ها
+    window.addEventListener('scroll', checkFade);
+    
+    // هاور افکت پیشرفته برای کارت‌های قیمت
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    
+    pricingCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            // افزودن کلاس hover به کارت فعلی
+            this.classList.add('card-hover');
+            
+            // کمرنگ کردن سایر کارت‌ها
+            pricingCards.forEach(otherCard => {
+                if (otherCard !== this) {
+                    otherCard.style.opacity = '0.7';
+                    otherCard.style.transform = 'scale(0.98)';
+                }
+            });
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            // حذف کلاس hover از کارت فعلی
+            this.classList.remove('card-hover');
+            
+            // بازگرداندن حالت عادی به تمام کارت‌ها
+            pricingCards.forEach(otherCard => {
+                otherCard.style.opacity = '1';
+                otherCard.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    });
+});
+</script>
 
+<!-- بخش پکیج‌های قیمتی -->
+<section class="pricing-section">
+    <div class="container">
+        <div class="pricing-title">
+            <h2>انتخاب بسته مناسب شما</h2>
+            <p>ما انواع بسته‌های درمانی متناسب با نیاز شما را ارائه می‌دهیم. با انتخاب هر بسته از خدمات اختصاصی و ویژه بهره‌مند خواهید شد.</p>
+        </div>
+        
+        <div class="pricing-container">
+            <!-- پکیج پایه -->
+            <div class="pricing-card fade-in-element">
+                <div class="pricing-header">
+                    <h3 class="package-name">پکیج پایه</h3>
+                    <div class="price">
+                        <span class="currency">تومان</span>
+                        <span>۴,۵۰۰,۰۰۰</span>
+                    </div>
+                    <p>مناسب برای مراجعین عادی</p>
+                </div>
+                
+                <ul class="pricing-features">
+                    <li class="pricing-feature">ویزیت اولیه تخصصی</li>
+                    <li class="pricing-feature">مشاوره پیش از عمل</li>
+                    <li class="pricing-feature">طراحی دیجیتال بینی</li>
+                    <li class="pricing-feature inactive">پیگیری ۳ ماهه پس از عمل</li>
+                    <li class="pricing-feature inactive">مراقبت‌های ویژه</li>
+                </ul>
+                
+                <div class="pricing-footer">
+                    <a href="#contact" class="pricing-btn">رزرو نوبت</a>
+                </div>
+            </div>
+            
+            <!-- پکیج ویژه (پکیج محبوب) -->
+            <div class="pricing-card popular fade-in-element delay-200">
+                <div class="pricing-header">
+                    <div class="popular-badge">محبوب‌ترین</div>
+                    <h3 class="package-name">پکیج ویژه</h3>
+                    <div class="price">
+                        <span class="currency">تومان</span>
+                        <span>۶,۹۰۰,۰۰۰</span>
+                    </div>
+                    <p>انتخاب اکثر بیماران</p>
+                </div>
+                
+                <ul class="pricing-features">
+                    <li class="pricing-feature">ویزیت اولیه تخصصی</li>
+                    <li class="pricing-feature">مشاوره پیش از عمل</li>
+                    <li class="pricing-feature highlight">طراحی سه بعدی پیشرفته</li>
+                    <li class="pricing-feature">پیگیری ۶ ماهه پس از عمل</li>
+                    <li class="pricing-feature">جلسات مراقبت پس از عمل</li>
+                </ul>
+                
+                <div class="pricing-footer">
+                    <a href="#contact" class="pricing-btn">رزرو نوبت</a>
+                </div>
+            </div>
+            
+            <!-- پکیج طلایی -->
+            <div class="pricing-card fade-in-element delay-400">
+                <div class="pricing-header">
+                    <h3 class="package-name">پکیج طلایی</h3>
+                    <div class="price">
+                        <span class="currency">تومان</span>
+                        <span>۸,۹۰۰,۰۰۰</span>
+                    </div>
+                    <p>خدمات کامل و اختصاصی</p>
+                </div>
+                
+                <ul class="pricing-features">
+                    <li class="pricing-feature">ویزیت اولیه تخصصی</li>
+                    <li class="pricing-feature">مشاوره پیش و پس از عمل</li>
+                    <li class="pricing-feature highlight">طراحی سه بعدی پیشرفته با تکنولوژی AI</li>
+                    <li class="pricing-feature highlight">پیگیری ۱۲ ماهه پس از عمل</li>
+                    <li class="pricing-feature">پشتیبانی ۲۴ ساعته</li>
+                </ul>
+                
+                <div class="pricing-footer">
+                    <a href="#contact" class="pricing-btn">رزرو نوبت</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
