@@ -554,8 +554,8 @@ body {
 /* نمادهای پزشکی متحرک */
 .medical-icon {
     position: absolute;
-    color: #1a365d; /* رنگ سرمه‌ای */
-    opacity: 0.1;
+    color: #235191; /* رنگ سرمه‌ای */
+    opacity: 0.4;
     z-index: -1;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -1217,7 +1217,7 @@ const Navigation = () => {
     ];
     
     // تعداد نمادها
-    const iconCount = 15;
+    const iconCount = 30;
     
     // ایجاد نمادهای متحرک
     for (let i = 0; i < iconCount; i++) {
@@ -1239,8 +1239,8 @@ const Navigation = () => {
       iconElement.style.top = `${posY}%`;
       
       // تنظیم مدت زمان و تأخیر انیمیشن
-      const duration = Math.floor(Math.random() * 30) + 40; // 40s تا 70s
-      const delay = Math.floor(Math.random() * 20);
+      const duration = Math.floor(Math.random() * 10) + 20; // 40s تا 70s
+      const delay = Math.floor(Math.random() * 5);
       iconElement.style.setProperty('--duration', `${duration}s`);
       iconElement.style.animationDelay = `${delay}s`;
       
