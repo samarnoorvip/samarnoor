@@ -527,6 +527,92 @@
             margin-bottom: 45px; /* افزایش فاصله پایین بخش hero */
         }
 
+
+
+        /* پس‌زمینه انیمیشنی با گرادیان متحرک */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            text-align: right;
+            direction: rtl;
+            /* حذف بک‌گراند کرمی رنگ و جایگزینی با گرادیان متحرک */
+            background: linear-gradient(-45deg, #f0f8ff, #e6f2ff, #d9ebff, #f5f5f5);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* برای اضافه کردن افکت متحرک بیشتر، می‌توانید از ذرات متحرک استفاده کنید */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .animated-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%231a365d" opacity="0.05"/></svg>');
+            animation: particleAnimation 20s linear infinite;
+        }
+
+        @keyframes particleAnimation {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
+        /* اضافه کردن یک لایه دوم برای افکت عمق بیشتر */
+        .animated-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="1.5" fill="%234c76b1" opacity="0.03"/></svg>');
+            animation: particleAnimation2 25s linear infinite;
+        }
+
+        @keyframes particleAnimation2 {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-150px) translateX(-150px);
+            }
+        }
+
+        /* برای اطمینان از خوانایی محتوا، می‌توانید پس‌زمینه کارت‌ها را کمی تغییر دهید */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+
     </style>
 
             <script src="https://cdn.tailwindcss.com"></script>
@@ -543,6 +629,8 @@
                 
 </head>
 <body>
+
+<div class="animated-background"></div>
 
             <!-- Navigation Container -->
             <div id="navigation-root"></div>
