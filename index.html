@@ -1216,8 +1216,22 @@ const Navigation = () => {
       '<i class="fas fa-briefcase-medical"></i>'
     ];
     
-    // تعداد نمادها
     const iconCount = 20;
+    const minDistance = 10; // حداقل فاصله بین آیکون‌ها (بر حسب درصد)
+
+    let positions = []; // آرایه‌ای برای ذخیره موقعیت‌های قبلی
+
+    function getRandomPosition() {
+        let posX, posY, valid;
+        do {
+            posX = Math.floor(Math.random() * 90) + 5; // 5٪ تا 95٪ (برای جلوگیری از حاشیه‌ها)
+            posY = Math.floor(Math.random() * 90) + 5;
+            valid = positions.every(pos => Math.hypot(posX - pos.x, posY - pos.y) > minDistance);
+        } while (!valid);
+
+        positions.push({ x: posX, y: posY });
+        return { posX, posY };
+    }
     
     // ایجاد نمادهای متحرک
     for (let i = 0; i < iconCount; i++) {
@@ -1232,11 +1246,10 @@ const Navigation = () => {
       const size = Math.floor(Math.random() * 50) + 30; // 30px تا 80px
       iconElement.style.fontSize = `${size}px`;
       
-      // تنظیم موقعیت تصادفی
-      const posX = Math.floor(Math.random() * 100);
-      const posY = Math.floor(Math.random() * 100);
-      iconElement.style.left = `${posX}%`;
-      iconElement.style.top = `${posY}%`;
+        // دریافت موقعیت تصادفی بدون برخورد
+        const { posX, posY } = getRandomPosition();
+        iconElement.style.left = `${posX}%`;
+        iconElement.style.top = `${posY}%`;
       
       // تنظیم مدت زمان و تأخیر انیمیشن
       const duration = Math.floor(Math.random() * 10) + 20; // 40s تا 70s
