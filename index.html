@@ -528,89 +528,76 @@
         }
 
 
+/* پس‌زمینه اصلی با رنگ کرم */
+body {
+    font-family: 'Tajawal', Arial, sans-serif;
+    text-align: right;
+    direction: rtl;
+    background-color: #f9f4e8; /* حفظ رنگ کرم اصلی */
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+}
 
-        /* پس‌زمینه انیمیشنی با گرادیان متحرک */
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+/* اضافه کردن لایه متحرک */
+.animated-medical-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
 
-        body {
-            font-family: 'Tajawal', Arial, sans-serif;
-            text-align: right;
-            direction: rtl;
-            /* حذف بک‌گراند کرمی رنگ و جایگزینی با گرادیان متحرک */
-            background: linear-gradient(-45deg, #f0f8ff, #e6f2ff, #d9ebff, #f5f5f5);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-            color: #333;
-            line-height: 1.6;
-        }
+/* نمادهای پزشکی متحرک */
+.medical-icon {
+    position: absolute;
+    color: #1a365d; /* رنگ سرمه‌ای */
+    opacity: 0.1;
+    z-index: -1;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: var(--duration);
+    animation-name: float;
+}
 
-        /* برای اضافه کردن افکت متحرک بیشتر، می‌توانید از ذرات متحرک استفاده کنید */
-        .animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(var(--x-shift), var(--y-shift)) rotate(var(--rotation));
+    }
+    50% {
+        transform: translate(var(--x-shift-rev), var(--y-shift-rev)) rotate(calc(var(--rotation) * 2));
+    }
+    75% {
+        transform: translate(var(--x-shift-alt), var(--y-shift-alt)) rotate(calc(var(--rotation) * 3));
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
 
-        .animated-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%231a365d" opacity="0.05"/></svg>');
-            animation: particleAnimation 20s linear infinite;
-        }
+/* برای خوانایی بهتر محتوا، کارت‌ها با پس‌زمینه سفیدتر */
+.card {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
 
-        @keyframes particleAnimation {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px);
-            }
-        }
+/* اضافه کردن یک افکت حرکت آرام به کارت‌ها هنگام اسکرول */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        /* اضافه کردن یک لایه دوم برای افکت عمق بیشتر */
-        .animated-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="1.5" fill="%234c76b1" opacity="0.03"/></svg>');
-            animation: particleAnimation2 25s linear infinite;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(26, 54, 93, 0.12);
+}
 
-        @keyframes particleAnimation2 {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            100% {
-                transform: translateY(-150px) translateX(-150px);
-            }
-        }
 
-        /* برای اطمینان از خوانایی محتوا، می‌توانید پس‌زمینه کارت‌ها را کمی تغییر دهید */
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-        }
 
 
     </style>
@@ -629,8 +616,6 @@
                 
 </head>
 <body>
-
-<div class="animated-background"></div>
 
             <!-- Navigation Container -->
             <div id="navigation-root"></div>
@@ -1206,6 +1191,74 @@ const Navigation = () => {
             this.reset();
         });
     </script>
+
+
+
+<!-- این کد را درست قبل از تگ </body> قرار دهید -->
+
+<!-- لایه متحرک برای پس‌زمینه -->
+<div class="animated-medical-bg" id="medicalBg"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const backgroundElement = document.getElementById('medicalBg');
+    
+    // نمادهای مرتبط با سلامت و پزشکی
+    const icons = [
+      '<i class="fas fa-heartbeat"></i>',
+      '<i class="fas fa-stethoscope"></i>',
+      '<i class="fas fa-pills"></i>',
+      '<i class="fas fa-syringe"></i>',
+      '<i class="fas fa-hospital"></i>',
+      '<i class="fas fa-user-md"></i>',
+      '<i class="fas fa-ambulance"></i>',
+      '<i class="fas fa-notes-medical"></i>',
+      '<i class="fas fa-briefcase-medical"></i>'
+    ];
+    
+    // تعداد نمادها
+    const iconCount = 15;
+    
+    // ایجاد نمادهای متحرک
+    for (let i = 0; i < iconCount; i++) {
+      const iconElement = document.createElement('div');
+      iconElement.className = 'medical-icon';
+      
+      // انتخاب یک نماد تصادفی
+      const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+      iconElement.innerHTML = randomIcon;
+      
+      // تنظیم اندازه تصادفی
+      const size = Math.floor(Math.random() * 50) + 30; // 30px تا 80px
+      iconElement.style.fontSize = `${size}px`;
+      
+      // تنظیم موقعیت تصادفی
+      const posX = Math.floor(Math.random() * 100);
+      const posY = Math.floor(Math.random() * 100);
+      iconElement.style.left = `${posX}%`;
+      iconElement.style.top = `${posY}%`;
+      
+      // تنظیم مدت زمان و تأخیر انیمیشن
+      const duration = Math.floor(Math.random() * 30) + 40; // 40s تا 70s
+      const delay = Math.floor(Math.random() * 20);
+      iconElement.style.setProperty('--duration', `${duration}s`);
+      iconElement.style.animationDelay = `${delay}s`;
+      
+      // تنظیم متغیرهای حرکت
+      iconElement.style.setProperty('--x-shift', `${Math.random() * 100 - 50}px`);
+      iconElement.style.setProperty('--y-shift', `${Math.random() * 100 - 50}px`);
+      iconElement.style.setProperty('--x-shift-rev', `${Math.random() * -100 + 50}px`);
+      iconElement.style.setProperty('--y-shift-rev', `${Math.random() * -100 + 50}px`);
+      iconElement.style.setProperty('--x-shift-alt', `${Math.random() * 80 - 40}px`);
+      iconElement.style.setProperty('--y-shift-alt', `${Math.random() * 80 - 40}px`);
+      iconElement.style.setProperty('--rotation', `${Math.random() * 180}deg`);
+      
+      // اضافه کردن به پس‌زمینه
+      backgroundElement.appendChild(iconElement);
+    }
+  });
+</script>
+
 
 
 </body>
