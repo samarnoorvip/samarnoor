@@ -2548,9 +2548,11 @@ const Navigation = () => {
 
 
 
- <!-- جراحة انحراف الأنف -->
 
- <div class="container">
+
+ <!-- اسلایدشو با متن-->
+
+<div class="container">
     <section class="medical-section fade-in-element">
       <div class="slideshow-container" id="image-text-slideshow" style="width: 100%; position: relative; overflow: hidden; border-radius: 8px;"></div>
     </section>
@@ -2779,6 +2781,47 @@ const Navigation = () => {
             }
           }
           
+          // چیدمان واکنش‌گرا - تغییر چیدمان در موبایل
+          function handleResponsiveLayout() {
+            const slides = slideshowContainer.querySelectorAll('.slide');
+            const isMobile = window.innerWidth < 768;
+            
+            slides.forEach(slide => {
+              // در موبایل: عکس بالا، متن پایین
+              if (isMobile) {
+                slide.style.flexDirection = 'column';
+                
+                const imageContainer = slide.querySelector('.image-part');
+                const textContainer = slide.querySelector('.text-part');
+                
+                imageContainer.style.width = '100%';
+                imageContainer.style.height = '40%';
+                
+                textContainer.style.width = '100%';
+                textContainer.style.height = '60%';
+              } 
+              // در دسکتاپ: عکس چپ، متن راست
+              else {
+                slide.style.flexDirection = 'row';
+                
+                const imageContainer = slide.querySelector('.image-part');
+                const textContainer = slide.querySelector('.text-part');
+                
+                imageContainer.style.width = '25%';
+                imageContainer.style.height = '100%';
+                
+                textContainer.style.width = '75%';
+                textContainer.style.height = '100%';
+              }
+            });
+          }
+          
+          // فراخوانی اولیه چیدمان واکنش‌گرا
+          handleResponsiveLayout();
+          
+          // بررسی تغییر اندازه صفحه
+          window.addEventListener('resize', handleResponsiveLayout);
+          
           // شروع اسلایدشو خودکار
           startSlideshow();
         }
@@ -2856,93 +2899,6 @@ const Navigation = () => {
       });
     </script>
   </div>
-
-
-
-<!-- بخش پکیج‌های قیمتی -->
-<section class="pricing-section">
-    <div class="container">
-        <div class="pricing-title">
-            <h2>انتخاب بسته مناسب شما</h2>
-            <p>ما انواع بسته‌های درمانی متناسب با نیاز شما را ارائه می‌دهیم. با انتخاب هر بسته از خدمات اختصاصی و ویژه بهره‌مند خواهید شد.</p>
-        </div>
-        
-        <div class="pricing-container">
-            <!-- پکیج پایه -->
-            <div class="pricing-card fade-in-element">
-                <div class="pricing-header">
-                    <h3 class="package-name">پکیج پایه</h3>
-                    <div class="price">
-                        <span class="currency">تومان</span>
-                        <span>۴,۵۰۰,۰۰۰</span>
-                    </div>
-                    <p>مناسب برای مراجعین عادی</p>
-                </div>
-                
-                <ul class="pricing-features">
-                    <li class="pricing-feature">ویزیت اولیه تخصصی</li>
-                    <li class="pricing-feature">مشاوره پیش از عمل</li>
-                    <li class="pricing-feature">طراحی دیجیتال بینی</li>
-                    <li class="pricing-feature inactive">پیگیری ۳ ماهه پس از عمل</li>
-                    <li class="pricing-feature inactive">مراقبت‌های ویژه</li>
-                </ul>
-                
-                <div class="pricing-footer">
-                    <a href="#contact" class="pricing-btn">رزرو نوبت</a>
-                </div>
-            </div>
-            
-            <!-- پکیج ویژه (پکیج محبوب) -->
-            <div class="pricing-card popular fade-in-element delay-200">
-                <div class="pricing-header">
-                    <div class="popular-badge">محبوب‌ترین</div>
-                    <h3 class="package-name">پکیج ویژه</h3>
-                    <div class="price">
-                        <span class="currency">تومان</span>
-                        <span>۶,۹۰۰,۰۰۰</span>
-                    </div>
-                    <p>انتخاب اکثر بیماران</p>
-                </div>
-                
-                <ul class="pricing-features">
-                    <li class="pricing-feature">ویزیت اولیه تخصصی</li>
-                    <li class="pricing-feature">مشاوره پیش از عمل</li>
-                    <li class="pricing-feature highlight">طراحی سه بعدی پیشرفته</li>
-                    <li class="pricing-feature">پیگیری ۶ ماهه پس از عمل</li>
-                    <li class="pricing-feature">جلسات مراقبت پس از عمل</li>
-                </ul>
-                
-                <div class="pricing-footer">
-                    <a href="#contact" class="pricing-btn">رزرو نوبت</a>
-                </div>
-            </div>
-            
-            <!-- پکیج طلایی -->
-            <div class="pricing-card fade-in-element delay-400">
-                <div class="pricing-header">
-                    <h3 class="package-name">پکیج طلایی</h3>
-                    <div class="price">
-                        <span class="currency">تومان</span>
-                        <span>۸,۹۰۰,۰۰۰</span>
-                    </div>
-                    <p>خدمات کامل و اختصاصی</p>
-                </div>
-                
-                <ul class="pricing-features">
-                    <li class="pricing-feature">ویزیت اولیه تخصصی</li>
-                    <li class="pricing-feature">مشاوره پیش و پس از عمل</li>
-                    <li class="pricing-feature highlight">طراحی سه بعدی پیشرفته با تکنولوژی AI</li>
-                    <li class="pricing-feature highlight">پیگیری ۱۲ ماهه پس از عمل</li>
-                    <li class="pricing-feature">پشتیبانی ۲۴ ساعته</li>
-                </ul>
-                
-                <div class="pricing-footer">
-                    <a href="#contact" class="pricing-btn">رزرو نوبت</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 
