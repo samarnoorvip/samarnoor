@@ -2582,17 +2582,17 @@ const Navigation = () => {
         // تصاویر و متن های اسلایدشو
         const slides = [
           {
-            imageSrc: 'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
+            imageSrc: 'https://i.ibb.co/vxHn5Tjw/768x576.jpg',
             title: 'عنوان اسلاید اول',
             description: 'توضیحات مربوط به اسلاید اول که می‌تواند شامل متن طولانی باشد. این متن می‌تواند توضیحات کاملی درباره موضوع مورد نظر ارائه دهد. می‌توان از این بخش برای توضیح ویژگی‌ها، مزایا و جزئیات بیشتر استفاده کرد.'
           },
           {
-            imageSrc: 'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
+            imageSrc: '/api/placeholder/400/320',
             title: 'عنوان اسلاید دوم',
             description: 'توضیحات مربوط به اسلاید دوم که اطلاعات بیشتری را در اختیار بازدیدکنندگان قرار می‌دهد. این بخش می‌تواند شامل مطالب آموزشی، راهنمایی‌ها یا هر نوع محتوای متنی مرتبط با تصویر باشد. از این فضا به بهترین شکل استفاده کنید.'
           },
           {
-            imageSrc: 'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
+            imageSrc: '/api/placeholder/400/320',
             title: 'عنوان اسلاید سوم',
             description: 'توضیحات مربوط به اسلاید سوم که مکمل تصویر است. این بخش فرصتی است برای ارائه جزئیات بیشتر، پاسخ به سوالات احتمالی، معرفی محصول یا خدمات و هر گونه اطلاعات مهم دیگر که می‌خواهید به مخاطب منتقل کنید.'
           }
@@ -2635,7 +2635,7 @@ const Navigation = () => {
             // اضافه کردن تست خطا برای تصاویر
             img.onerror = function() {
               console.error(`خطا در بارگذاری تصویر: ${slide.imageSrc}`);
-              this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
+              this.src = '/api/placeholder/400/320?text=تصویر+بارگذاری+نشد';
             };
             
             imageContainer.appendChild(img);
@@ -2678,13 +2678,13 @@ const Navigation = () => {
             slideshowContainer.appendChild(slideElement);
           });
           
-          // اضافه کردن دکمه‌های ناوبری
+          // اضافه کردن دکمه‌های ناوبری - جهت درست
           const prevButton = document.createElement('button');
           prevButton.className = 'slideshow-nav nav-prev';
-          prevButton.innerHTML = '&#10094;';
+          prevButton.innerHTML = '&#10095;'; // تغییر علامت برای اسلاید قبلی
           prevButton.style.position = 'absolute';
           prevButton.style.top = '50%';
-          prevButton.style.left = '10px';
+          prevButton.style.right = '10px'; // تغییر موقعیت به راست
           prevButton.style.transform = 'translateY(-50%)';
           prevButton.style.zIndex = '1000';
           prevButton.style.background = 'rgba(0,0,0,0.5)';
@@ -2703,10 +2703,10 @@ const Navigation = () => {
           
           const nextButton = document.createElement('button');
           nextButton.className = 'slideshow-nav nav-next';
-          nextButton.innerHTML = '&#10095;';
+          nextButton.innerHTML = '&#10094;'; // تغییر علامت برای اسلاید بعدی
           nextButton.style.position = 'absolute';
           nextButton.style.top = '50%';
-          nextButton.style.right = '10px';
+          nextButton.style.left = '10px'; // تغییر موقعیت به چپ
           nextButton.style.transform = 'translateY(-50%)';
           nextButton.style.zIndex = '1000';
           nextButton.style.background = 'rgba(0,0,0,0.5)';
