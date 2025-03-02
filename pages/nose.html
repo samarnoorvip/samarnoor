@@ -1549,8 +1549,6 @@ body {
             <!-- افزودن Babel برای پشتیبانی از JSX -->
             <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-            <!-- افزودن فایل JS اسلایدشو -->
-            <script type="text/babel" src="slideshow.js"></script>
 
                 
 </head>
@@ -2636,11 +2634,7 @@ const Navigation = () => {
             img.style.height = '100%';
             img.style.objectFit = 'cover';
             
-            // اضافه کردن تست خطا برای تصاویر
-            img.onerror = function() {
-              console.error(`خطا در بارگذاری تصویر: ${slide.imageSrc}`);
-              this.src = 'https://via.placeholder.com/320x320?text=تصویر+بارگذاری+نشد';
-            };
+
             
             imageContainer.appendChild(img);
             
