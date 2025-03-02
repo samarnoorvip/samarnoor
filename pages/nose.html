@@ -2582,17 +2582,17 @@ const Navigation = () => {
         // تصاویر و متن های اسلایدشو
         const slides = [
           {
-            imageSrc: 'https://via.placeholder.com/320x320?text=تصویر+1',
+            imageSrc: 'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
             title: 'عنوان اسلاید اول',
             description: 'توضیحات مربوط به اسلاید اول که می‌تواند شامل متن طولانی باشد. این متن می‌تواند توضیحات کاملی درباره موضوع مورد نظر ارائه دهد. می‌توان از این بخش برای توضیح ویژگی‌ها، مزایا و جزئیات بیشتر استفاده کرد.'
           },
           {
-            imageSrc: 'https://via.placeholder.com/320x320?text=تصویر+2',
+            imageSrc: 'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
             title: 'عنوان اسلاید دوم',
             description: 'توضیحات مربوط به اسلاید دوم که اطلاعات بیشتری را در اختیار بازدیدکنندگان قرار می‌دهد. این بخش می‌تواند شامل مطالب آموزشی، راهنمایی‌ها یا هر نوع محتوای متنی مرتبط با تصویر باشد. از این فضا به بهترین شکل استفاده کنید.'
           },
           {
-            imageSrc: 'https://via.placeholder.com/320x320?text=تصویر+3',
+            imageSrc: 'https://i.ibb.co/cKTxpTwz/14-1-1.jpg',
             title: 'عنوان اسلاید سوم',
             description: 'توضیحات مربوط به اسلاید سوم که مکمل تصویر است. این بخش فرصتی است برای ارائه جزئیات بیشتر، پاسخ به سوالات احتمالی، معرفی محصول یا خدمات و هر گونه اطلاعات مهم دیگر که می‌خواهید به مخاطب منتقل کنید.'
           }
@@ -2681,7 +2681,7 @@ const Navigation = () => {
           // اضافه کردن دکمه‌های ناوبری
           const prevButton = document.createElement('button');
           prevButton.className = 'slideshow-nav nav-prev';
-          prevButton.innerHTML = '&#10094;';
+          prevButton.innerHTML = '&#10095;';
           prevButton.style.position = 'absolute';
           prevButton.style.top = '50%';
           prevButton.style.left = '10px';
@@ -2697,13 +2697,13 @@ const Navigation = () => {
           prevButton.style.cursor = 'pointer';
           prevButton.addEventListener('click', function(e) {
             e.preventDefault();
-            prevSlide();
+            nextSlide();
           });
-          slideshowContainer.appendChild(prevButton);
+          slideshowContainer.appendChild(nextButton);
           
           const nextButton = document.createElement('button');
           nextButton.className = 'slideshow-nav nav-next';
-          nextButton.innerHTML = '&#10095;';
+          nextButton.innerHTML = '&#10094;';
           nextButton.style.position = 'absolute';
           nextButton.style.top = '50%';
           nextButton.style.right = '10px';
@@ -2719,9 +2719,9 @@ const Navigation = () => {
           nextButton.style.cursor = 'pointer';
           nextButton.addEventListener('click', function(e) {
             e.preventDefault();
-            nextSlide();
+            prevSlide();
           });
-          slideshowContainer.appendChild(nextButton);
+          slideshowContainer.appendChild(prevButton);
           
           // اضافه کردن نقاط نشانگر
           const dotsContainer = document.createElement('div');
