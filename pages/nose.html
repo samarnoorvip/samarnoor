@@ -2641,14 +2641,14 @@ const Navigation = () => {
             
             imageContainer.appendChild(img);
             
-            // بخش متن (75% عرض)
+            // بخش متن (75% عرض) - با شفافیت بیشتر
             const textContainer = document.createElement('div');
             textContainer.className = 'text-part';
             textContainer.style.width = '75%';
             textContainer.style.height = '100%';
             textContainer.style.padding = '20px';
             textContainer.style.boxSizing = 'border-box';
-            textContainer.style.backgroundColor = '#fff';
+            textContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.7)'; // تغییر به حالت نیمه شفاف
             textContainer.style.display = 'flex';
             textContainer.style.flexDirection = 'column';
             textContainer.style.justifyContent = 'center';
