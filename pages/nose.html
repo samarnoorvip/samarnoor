@@ -1524,6 +1524,162 @@ body {
 
 
 
+/* اسلایدشو با متن*/
+
+/* استایل‌های اصلی اسلایدشو تصویر و متن */
+.text-image-slideshow {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y pinch-zoom;
+}
+
+.slide-wrapper {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    will-change: opacity;
+}
+
+.slide-wrapper.active {
+    display: flex;
+    opacity: 1;
+    z-index: 1;
+}
+
+/* استایل برای دسکتاپ - چیدمان افقی */
+@media (min-width: 768px) {
+    .slide-wrapper {
+        flex-direction: row;
+    }
+
+    .slide-image {
+        flex: 1;
+        height: 300px;
+    }
+
+    .slide-text {
+        flex: 3;
+        padding: 20px 30px;
+        height: 300px;
+    }
+}
+
+/* استایل برای موبایل - چیدمان عمودی */
+@media (max-width: 767px) {
+    .slide-wrapper {
+        flex-direction: column;
+    }
+
+    .slide-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .slide-text {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-text h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.slide-text p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* استایل‌های کنترل‌های اسلایدشو */
+.slideshow-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    touch-action: manipulation;
+}
+
+.slideshow-nav:hover {
+    background: rgba(255,255,255,0.8);
+}
+
+.nav-prev {
+    left: 10px;
+}
+
+.nav-next {
+    right: 10px;
+}
+
+.slideshow-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    padding: 5px;
+}
+
+.slideshow-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    touch-action: manipulation;
+    margin: 0 4px;
+}
+
+.slideshow-dot.active {
+    background: white;
+}
+
+/* تغییرات خاص موبایل */
+@media (max-width: 767px) {
+    .slideshow-nav {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .slideshow-dot {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+
+
+
 
 
     </style>
@@ -2551,344 +2707,164 @@ const Navigation = () => {
 
 
  <!-- جراحة انحراف الأنف -->
- <div class="container">
-    <section class="medical-section fade-in-element">
-      <div class="slideshow-container" id="image-text-slideshow"></div>
-    </section>
-  
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const slideshowContainer = document.getElementById('image-text-slideshow');
-        
-        if (!slideshowContainer) {
-          console.error('کانتینر اسلایدشو پیدا نشد!');
-          return;
+<!-- ساختار HTML اسلایدشو -->
+<div class="text-image-slideshow">
+    <!-- اسلاید اول -->
+    <div class="slide-wrapper active">
+        <div class="slide-image">
+            <img src="image1.jpg" alt="توضیح تصویر 1">
+        </div>
+        <div class="slide-text">
+            <h3>عنوان اسلاید اول</h3>
+            <p>متن توضیحات اسلاید اول. این متن می‌تواند شامل اطلاعات مربوط به تصویر باشد. محتوای متنی این قسمت سه برابر فضای تصویر است و در موبایل زیر تصویر قرار می‌گیرد.</p>
+            <p>می‌توانید پاراگراف‌های بیشتری اضافه کنید یا از عناصر HTML دیگر استفاده نمایید.</p>
+        </div>
+    </div>
+    
+    <!-- اسلاید دوم -->
+    <div class="slide-wrapper">
+        <div class="slide-image">
+            <img src="image2.jpg" alt="توضیح تصویر 2">
+        </div>
+        <div class="slide-text">
+            <h3>عنوان اسلاید دوم</h3>
+            <p>متن توضیحات اسلاید دوم. این متن می‌تواند شامل اطلاعات مربوط به تصویر باشد. محتوای متنی این قسمت سه برابر فضای تصویر است و در موبایل زیر تصویر قرار می‌گیرد.</p>
+        </div>
+    </div>
+    
+    <!-- اسلاید سوم -->
+    <div class="slide-wrapper">
+        <div class="slide-image">
+            <img src="image3.jpg" alt="توضیح تصویر 3">
+        </div>
+        <div class="slide-text">
+            <h3>عنوان اسلاید سوم</h3>
+            <p>متن توضیحات اسلاید سوم. این متن می‌تواند شامل اطلاعات مربوط به تصویر باشد. محتوای متنی این قسمت سه برابر فضای تصویر است و در موبایل زیر تصویر قرار می‌گیرد.</p>
+        </div>
+    </div>
+    
+    <!-- دکمه‌های هدایت اسلاید -->
+    <button class="slideshow-nav nav-prev">&#10094;</button>
+    <button class="slideshow-nav nav-next">&#10095;</button>
+    
+    <!-- نقاط نشانگر اسلاید‌ها -->
+    <div class="slideshow-dots">
+        <button class="slideshow-dot active"></button>
+        <button class="slideshow-dot"></button>
+        <button class="slideshow-dot"></button>
+    </div>
+</div>
+
+
+
+
+<script>
+
+// کد جاوااسکریپت برای کنترل اسلایدشو
+document.addEventListener('DOMContentLoaded', function() {
+    // متغیرهای اصلی
+    const slides = document.querySelectorAll('.slide-wrapper');
+    const prevButton = document.querySelector('.nav-prev');
+    const nextButton = document.querySelector('.nav-next');
+    const dots = document.querySelectorAll('.slideshow-dot');
+    let currentSlide = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    // نمایش اسلاید با شماره مشخص
+    function showSlide(n) {
+        // ریست شماره اسلاید اگر از محدوده خارج شود
+        if (n >= slides.length) {
+            currentSlide = 0;
+        } else if (n < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = n;
         }
         
-        // استایل کانتینر
-        slideshowContainer.style.position = 'relative';
-        slideshowContainer.style.overflow = 'hidden';
-        slideshowContainer.style.width = '100%';
-        slideshowContainer.style.height = '320px';
-        slideshowContainer.style.minHeight = '320px';
-        slideshowContainer.style.display = 'flex';
-        slideshowContainer.style.flexDirection = 'row';
-        slideshowContainer.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
-        slideshowContainer.style.borderRadius = '8px';
+        // غیرفعال کردن همه اسلایدها و دات‌ها
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
         
-        // اطلاعات اسلایدها - استفاده از placeholder.com برای تصاویر
-        const slides = [
-          {
-            imageSrc: 'https://i.ibb.co/F4qmhqFY/4.jpg',
-            title: 'عنوان اسلاید اول',
-            description: 'توضیحات مربوط به اسلاید اول که می‌تواند شامل متن طولانی باشد. این متن می‌تواند توضیحات کاملی درباره موضوع مورد نظر ارائه دهد.'
-          },
-          {
-            imageSrc: 'https://i.ibb.co/F4qmhqFY/4.jpg',
-            title: 'عنوان اسلاید دوم',
-            description: 'توضیحات مربوط به اسلاید دوم که اطلاعات بیشتری را در اختیار بازدیدکنندگان قرار می‌دهد. این بخش می‌تواند شامل مطالب آموزشی باشد.'
-          },
-          {
-            imageSrc: 'https://i.ibb.co/F4qmhqFY/4.jpg',
-            title: 'عنوان اسلاید سوم',
-            description: 'توضیحات مربوط به اسلاید سوم که مکمل تصویر است. این بخش فرصتی است برای ارائه جزئیات بیشتر و پاسخ به سوالات احتمالی.'
-          }
-        ];
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
         
-        let currentIndex = 0;
-        let slideInterval;
+        // فعال کردن اسلاید و دات فعلی
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+    
+    // رویداد کلیک روی دکمه قبلی
+    prevButton.addEventListener('click', function() {
+        showSlide(currentSlide - 1);
+    });
+    
+    // رویداد کلیک روی دکمه بعدی
+    nextButton.addEventListener('click', function() {
+        showSlide(currentSlide + 1);
+    });
+    
+    // رویداد کلیک روی دات‌ها
+    dots.forEach(function(dot, index) {
+        dot.addEventListener('click', function() {
+            showSlide(index);
+        });
+    });
+    
+    // پشتیبانی از سوایپ برای دستگاه‌های لمسی
+    const slideshow = document.querySelector('.text-image-slideshow');
+    
+    slideshow.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    slideshow.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        // آستانه برای تشخیص سوایپ (بر حسب پیکسل)
+        const threshold = 50;
         
-        function createSlideElements() {
-          // حذف محتوای قبلی
-          slideshowContainer.innerHTML = '';
-          
-          // ایجاد اسلایدها
-          slides.forEach((slide, index) => {
-            const slideElement = document.createElement('div');
-            slideElement.className = 'slide';
-            slideElement.style.position = 'absolute';
-            slideElement.style.top = '0';
-            slideElement.style.left = '0';
-            slideElement.style.width = '100%';
-            slideElement.style.height = '100%';
-            slideElement.style.display = 'flex';
-            slideElement.style.opacity = index === 0 ? '1' : '0';
-            slideElement.style.transition = 'opacity 0.8s ease';
-            
-            // بخش تصویر
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-part';
-            imageContainer.style.width = '25%';
-            imageContainer.style.height = '100%';
-            imageContainer.style.overflow = 'hidden';
-            
-            const img = document.createElement('img');
-            img.src = slide.imageSrc;
-            img.alt = slide.title;
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'cover';
-            
-            // اضافه کردن event listener برای بررسی بارگذاری تصویر
-            img.onload = function() {
-              console.log(`تصویر ${index + 1} با موفقیت بارگذاری شد`);
-            };
-            
-            img.onerror = function() {
-              console.error(`خطا در بارگذاری تصویر ${index + 1}`);
-              // جایگزین کردن با تصویر پیش‌فرض
-              this.src = `https://via.placeholder.com/300x320/666666/ffffff?text=تصویر+جایگزین+${index + 1}`;
-            };
-            
-            imageContainer.appendChild(img);
-            
-            // بخش متن
-            const textContainer = document.createElement('div');
-            textContainer.className = 'text-part';
-            textContainer.style.width = '75%';
-            textContainer.style.height = '100%';
-            textContainer.style.padding = '20px';
-            textContainer.style.boxSizing = 'border-box';
-            textContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-            textContainer.style.display = 'flex';
-            textContainer.style.flexDirection = 'column';
-            textContainer.style.justifyContent = 'center';
-            textContainer.style.overflow = 'auto';
-            textContainer.style.direction = 'rtl'; // برای متون فارسی
-            
-            const title = document.createElement('h3');
-            title.textContent = slide.title;
-            title.style.margin = '0 0 15px 0';
-            title.style.fontSize = '20px';
-            title.style.color = '#333';
-            
-            const description = document.createElement('p');
-            description.textContent = slide.description;
-            description.style.margin = '0';
-            description.style.fontSize = '16px';
-            description.style.lineHeight = '1.6';
-            description.style.color = '#555';
-            
-            textContainer.appendChild(title);
-            textContainer.appendChild(description);
-            
-            // اضافه کردن بخش‌ها به اسلاید
-            slideElement.appendChild(imageContainer);
-            slideElement.appendChild(textContainer);
-            
-            // اضافه کردن به کانتینر اصلی
-            slideshowContainer.appendChild(slideElement);
-          });
-          
-          // اضافه کردن دکمه‌های ناوبری
-          addNavigationControls();
+        if (touchEndX + threshold < touchStartX) {
+            // سوایپ به چپ - اسلاید بعدی
+            showSlide(currentSlide + 1);
+        } else if (touchEndX > touchStartX + threshold) {
+            // سوایپ به راست - اسلاید قبلی
+            showSlide(currentSlide - 1);
         }
-        
-        function addNavigationControls() {
-          // دکمه قبلی
-          const prevButton = document.createElement('button');
-          prevButton.className = 'nav-prev';
-          prevButton.innerHTML = '&#10094;';
-          prevButton.style.position = 'absolute';
-          prevButton.style.top = '50%';
-          prevButton.style.left = '10px';
-          prevButton.style.transform = 'translateY(-50%)';
-          prevButton.style.zIndex = '1000';
-          prevButton.style.background = 'rgba(0,0,0,0.5)';
-          prevButton.style.color = 'white';
-          prevButton.style.border = 'none';
-          prevButton.style.borderRadius = '50%';
-          prevButton.style.width = '40px';
-          prevButton.style.height = '40px';
-          prevButton.style.fontSize = '18px';
-          prevButton.style.cursor = 'pointer';
-          prevButton.onclick = prevSlide;
-          
-          // دکمه بعدی
-          const nextButton = document.createElement('button');
-          nextButton.className = 'nav-next';
-          nextButton.innerHTML = '&#10095;';
-          nextButton.style.position = 'absolute';
-          nextButton.style.top = '50%';
-          nextButton.style.right = '10px';
-          nextButton.style.transform = 'translateY(-50%)';
-          nextButton.style.zIndex = '1000';
-          nextButton.style.background = 'rgba(0,0,0,0.5)';
-          nextButton.style.color = 'white';
-          nextButton.style.border = 'none';
-          nextButton.style.borderRadius = '50%';
-          nextButton.style.width = '40px';
-          nextButton.style.height = '40px';
-          nextButton.style.fontSize = '18px';
-          nextButton.style.cursor = 'pointer';
-          nextButton.onclick = nextSlide;
-          
-          // نقاط نشانگر
-          const dotsContainer = document.createElement('div');
-          dotsContainer.className = 'dots-container';
-          dotsContainer.style.position = 'absolute';
-          dotsContainer.style.bottom = '15px';
-          dotsContainer.style.left = '50%';
-          dotsContainer.style.transform = 'translateX(-50%)';
-          dotsContainer.style.display = 'flex';
-          dotsContainer.style.gap = '8px';
-          dotsContainer.style.zIndex = '1000';
-          
-          slides.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = 'dot';
-            dot.style.width = '12px';
-            dot.style.height = '12px';
-            dot.style.borderRadius = '50%';
-            dot.style.background = index === 0 ? 'white' : 'rgba(255,255,255,0.5)';
-            dot.style.border = 'none';
-            dot.style.cursor = 'pointer';
-            dot.style.boxShadow = '0 0 2px rgba(0,0,0,0.5)';
-            dot.onclick = () => goToSlide(index);
-            
-            dotsContainer.appendChild(dot);
-          });
-          
-          slideshowContainer.appendChild(prevButton);
-          slideshowContainer.appendChild(nextButton);
-          slideshowContainer.appendChild(dotsContainer);
-          
-          // پشتیبانی از لمس برای دستگاه‌های موبایل
-          setupTouchSupport();
-        }
-        
-        function setupTouchSupport() {
-          let touchStartX = 0;
-          let touchEndX = 0;
-          
-          slideshowContainer.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-            stopSlideshow();
-          }, { passive: true });
-          
-          slideshowContainer.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            
-            if (touchEndX < touchStartX - 50) {
-              nextSlide();
-            } else if (touchEndX > touchStartX + 50) {
-              prevSlide();
-            }
-            
-            startSlideshow();
-          }, { passive: true });
-        }
-        
-        function setupResponsiveLayout() {
-          function adjustLayout() {
-            const isMobile = window.innerWidth < 768;
-            const slides = document.querySelectorAll('.slide');
-            
-            slides.forEach(slide => {
-              if (isMobile) {
-                // چیدمان موبایل: تصویر بالا، متن پایین
-                slide.style.flexDirection = 'column';
-                
-                const imageContainer = slide.querySelector('.image-part');
-                const textContainer = slide.querySelector('.text-part');
-                
-                if (imageContainer && textContainer) {
-                  imageContainer.style.width = '100%';
-                  imageContainer.style.height = '40%';
-                  
-                  textContainer.style.width = '100%';
-                  textContainer.style.height = '60%';
-                }
-              } else {
-                // چیدمان دسکتاپ: تصویر چپ، متن راست
-                slide.style.flexDirection = 'row';
-                
-                const imageContainer = slide.querySelector('.image-part');
-                const textContainer = slide.querySelector('.text-part');
-                
-                if (imageContainer && textContainer) {
-                  imageContainer.style.width = '25%';
-                  imageContainer.style.height = '100%';
-                  
-                  textContainer.style.width = '75%';
-                  textContainer.style.height = '100%';
-                }
-              }
-            });
-          }
-          
-          // تنظیم اولیه
-          adjustLayout();
-          
-          // بررسی تغییر اندازه صفحه
-          window.addEventListener('resize', adjustLayout);
-        }
-        
-        function nextSlide() {
-          const slides = document.querySelectorAll('.slide');
-          const dots = document.querySelectorAll('.dot');
-          
-          slides[currentIndex].style.opacity = '0';
-          dots[currentIndex].style.background = 'rgba(255,255,255,0.5)';
-          
-          currentIndex = (currentIndex + 1) % slides.length;
-          
-          slides[currentIndex].style.opacity = '1';
-          dots[currentIndex].style.background = 'white';
-        }
-        
-        function prevSlide() {
-          const slides = document.querySelectorAll('.slide');
-          const dots = document.querySelectorAll('.dot');
-          
-          slides[currentIndex].style.opacity = '0';
-          dots[currentIndex].style.background = 'rgba(255,255,255,0.5)';
-          
-          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-          
-          slides[currentIndex].style.opacity = '1';
-          dots[currentIndex].style.background = 'white';
-        }
-        
-        function goToSlide(index) {
-          const slides = document.querySelectorAll('.slide');
-          const dots = document.querySelectorAll('.dot');
-          
-          slides[currentIndex].style.opacity = '0';
-          dots[currentIndex].style.background = 'rgba(255,255,255,0.5)';
-          
-          currentIndex = index;
-          
-          slides[currentIndex].style.opacity = '1';
-          dots[currentIndex].style.background = 'white';
-        }
-        
-        function startSlideshow() {
-          stopSlideshow();
-          slideInterval = setInterval(nextSlide, 5000);
-        }
-        
-        function stopSlideshow() {
-          if (slideInterval) {
-            clearInterval(slideInterval);
-          }
-        }
-        
-        // تنظیم توقف اسلایدشو با هاور موس (فقط در دسکتاپ)
-        if (window.matchMedia("(min-width: 768px)").matches) {
-          slideshowContainer.addEventListener('mouseenter', stopSlideshow);
-          slideshowContainer.addEventListener('mouseleave', startSlideshow);
-        }
-        
-        // ایجاد اسلایدشو
-        createSlideElements();
-        setupResponsiveLayout();
-        startSlideshow();
-        
-        console.log('اسلایدشو با موفقیت راه‌اندازی شد.');
-      });
-    </script>
-  </div>
+    }
+    
+    // نمایش اسلاید شروع
+    showSlide(0);
+    
+    // اتوپلی اختیاری
+
+    let slideInterval = setInterval(function() {
+        showSlide(currentSlide + 1);
+    }, 5000); // تغییر اسلاید هر 5 ثانیه
+    
+    // متوقف کردن اتوپلی با هاور موس یا لمس
+    slideshow.addEventListener('mouseenter', function() {
+        clearInterval(slideInterval);
+    });
+    
+    slideshow.addEventListener('mouseleave', function() {
+        slideInterval = setInterval(function() {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    });
+    
+    slideshow.addEventListener('touchstart', function() {
+        clearInterval(slideInterval);
+    });
+    
+});
+
+</script>
 
 
 
