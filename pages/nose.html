@@ -2643,17 +2643,18 @@ const Navigation = () => {
             line-height: 1.6;
         }
 
-        /* استایل‌های کنترل‌های اسلایدشو */
+        /* استایل‌های اصلاح شده برای دکمه‌های اسلایدشو */
         .slideshow-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.5);
+            background: rgba(0,0,0,0.3);
             border: none;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             font-size: 18px;
+            color: white;
             cursor: pointer;
             z-index: 10;
             display: flex;
@@ -2661,10 +2662,13 @@ const Navigation = () => {
             justify-content: center;
             outline: none;
             touch-action: manipulation;
+            text-align: center;
+            line-height: 1;
+            padding: 0;
         }
 
         .slideshow-nav:hover {
-            background: rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.6);
         }
 
         .nav-prev {
@@ -2675,15 +2679,18 @@ const Navigation = () => {
             right: 10px;
         }
 
+        /* بهبود دات‌ها */
         .slideshow-dots {
             position: absolute;
-            bottom: 10px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 8px;
             z-index: 10;
-            padding: 5px;
+            padding: 5px 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
         }
 
         .slideshow-dot {
@@ -2696,6 +2703,7 @@ const Navigation = () => {
             outline: none;
             touch-action: manipulation;
             margin: 0 4px;
+            padding: 0;
         }
 
         .slideshow-dot.active {
@@ -2722,7 +2730,7 @@ const Navigation = () => {
         <!-- اسلاید اول -->
         <div class="slide-wrapper active">
             <div class="slide-image">
-                <img src="https://picsum.photos/800/600?random=1" alt="توضیح تصویر 1">
+                <img src="https://i.ibb.co/s9JGcp5/image.jpg" alt="توضیح تصویر 1">
             </div>
             <div class="slide-text">
                 <h3>عنوان اسلاید اول</h3>
@@ -2734,7 +2742,7 @@ const Navigation = () => {
         <!-- اسلاید دوم -->
         <div class="slide-wrapper">
             <div class="slide-image">
-                <img src="https://picsum.photos/800/600?random=2" alt="توضیح تصویر 2">
+                <img src="https://i.ibb.co/tMZcXLF/image.jpg" alt="توضیح تصویر 2">
             </div>
             <div class="slide-text">
                 <h3>عنوان اسلاید دوم</h3>
@@ -2745,7 +2753,7 @@ const Navigation = () => {
         <!-- اسلاید سوم -->
         <div class="slide-wrapper">
             <div class="slide-image">
-                <img src="https://picsum.photos/800/600?random=3" alt="توضیح تصویر 3">
+                <img src="https://i.ibb.co/7xTq3hz/min.jpg" alt="توضیح تصویر 3">
             </div>
             <div class="slide-text">
                 <h3>عنوان اسلاید سوم</h3>
@@ -2766,8 +2774,18 @@ const Navigation = () => {
     </div>
 
     <script>
-        // کد جاوااسکریپت برای کنترل اسلایدشو
+        // کد جاوااسکریپت اصلاح شده برای کنترل اسلایدشو
         document.addEventListener('DOMContentLoaded', function() {
+            initSlideshow();
+        });
+
+        // در صورتی که DOMContentLoaded اجرا نشده باشد، کد را بعد از لود صفحه اجرا کنیم
+        window.onload = function() {
+            console.log("صفحه کاملاً بارگذاری شد");
+            initSlideshow();
+        };
+
+        function initSlideshow() {
             // متغیرهای اصلی
             const slides = document.querySelectorAll('.slide-wrapper');
             const prevButton = document.querySelector('.nav-prev');
@@ -2776,6 +2794,8 @@ const Navigation = () => {
             let currentSlide = 0;
             let touchStartX = 0;
             let touchEndX = 0;
+            
+            if (!slides.length) return;
             
             // نمایش اسلاید با شماره مشخص
             function showSlide(n) {
@@ -2802,34 +2822,45 @@ const Navigation = () => {
                 dots[currentSlide].classList.add('active');
             }
             
-            // رویداد کلیک روی دکمه قبلی
-            prevButton.addEventListener('click', function() {
-                showSlide(currentSlide - 1);
-            });
+            // حل مشکل دکمه‌ها: اضافه کردن رویدادها به صورت مستقیم
+            if (prevButton) {
+                prevButton.onclick = function(e) {
+                    e.preventDefault();
+                    showSlide(currentSlide - 1);
+                    return false;
+                };
+            }
             
-            // رویداد کلیک روی دکمه بعدی
-            nextButton.addEventListener('click', function() {
-                showSlide(currentSlide + 1);
-            });
+            if (nextButton) {
+                nextButton.onclick = function(e) {
+                    e.preventDefault();
+                    showSlide(currentSlide + 1);
+                    return false;
+                };
+            }
             
             // رویداد کلیک روی دات‌ها
             dots.forEach(function(dot, index) {
-                dot.addEventListener('click', function() {
+                dot.onclick = function(e) {
+                    e.preventDefault();
                     showSlide(index);
-                });
+                    return false;
+                };
             });
             
             // پشتیبانی از سوایپ برای دستگاه‌های لمسی
             const slideshow = document.querySelector('.text-image-slideshow');
             
-            slideshow.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-            
-            slideshow.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            });
+            if (slideshow) {
+                slideshow.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                
+                slideshow.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+            }
             
             function handleSwipe() {
                 // آستانه برای تشخیص سوایپ (بر حسب پیکسل)
@@ -2844,29 +2875,9 @@ const Navigation = () => {
                 }
             }
             
-            // نمایش اسلاید شروع
+            // شروع اسلایدشو
             showSlide(0);
-            
-            // اتوپلی
-            let slideInterval = setInterval(function() {
-                showSlide(currentSlide + 1);
-            }, 5000); // تغییر اسلاید هر 5 ثانیه
-            
-            // متوقف کردن اتوپلی با هاور موس یا لمس
-            slideshow.addEventListener('mouseenter', function() {
-                clearInterval(slideInterval);
-            });
-            
-            slideshow.addEventListener('mouseleave', function() {
-                slideInterval = setInterval(function() {
-                    showSlide(currentSlide + 1);
-                }, 5000);
-            });
-            
-            slideshow.addEventListener('touchstart', function() {
-                clearInterval(slideInterval);
-            });
-        });
+        }
     </script>
 </body>
 </html>
