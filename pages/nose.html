@@ -2795,13 +2795,13 @@ const Navigation = () => {
 
         function initSlideshow() {
             // متغیرهای اصلی
+            const slideshowContainer = document.querySelector('.text-image-slideshow');
             const slides = document.querySelectorAll('.slide-wrapper');
             const prevButton = document.querySelector('.nav-prev');
             const nextButton = document.querySelector('.nav-next');
             const dots = document.querySelectorAll('.slideshow-dot');
             let currentSlide = 0;
-            let touchStartX = 0;
-            let touchEndX = 0;
+            let slideInterval;
             
             if (!slides.length) return;
             
@@ -2819,72 +2819,132 @@ const Navigation = () => {
                 // غیرفعال کردن همه اسلایدها و دات‌ها
                 slides.forEach(slide => {
                     slide.classList.remove('active');
+                    slide.style.opacity = '0';
                 });
                 
                 dots.forEach(dot => {
                     dot.classList.remove('active');
+                    dot.style.background = 'rgba(255,255,255,0.5)';
                 });
                 
                 // فعال کردن اسلاید و دات فعلی
                 slides[currentSlide].classList.add('active');
+                slides[currentSlide].style.opacity = '1';
                 dots[currentSlide].classList.add('active');
+                dots[currentSlide].style.background = 'white';
             }
             
-            // حل مشکل دکمه‌ها: اضافه کردن رویدادها به صورت مستقیم
+            // نمایش اسلاید بعدی
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            // نمایش اسلاید قبلی
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            
+            // اضافه کردن رویدادها به دکمه‌ها
             if (prevButton) {
-                prevButton.onclick = function(e) {
+                prevButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    showSlide(currentSlide - 1);
-                    return false;
-                };
+                    prevSlide();
+                    stopSlideshow();
+                    startSlideshow();
+                });
+                
+                prevButton.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    prevSlide();
+                    stopSlideshow();
+                    startSlideshow();
+                });
             }
             
             if (nextButton) {
-                nextButton.onclick = function(e) {
+                nextButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    showSlide(currentSlide + 1);
-                    return false;
-                };
+                    nextSlide();
+                    stopSlideshow();
+                    startSlideshow();
+                });
+                
+                nextButton.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    nextSlide();
+                    stopSlideshow();
+                    startSlideshow();
+                });
             }
             
             // رویداد کلیک روی دات‌ها
             dots.forEach(function(dot, index) {
-                dot.onclick = function(e) {
+                dot.addEventListener('click', function(e) {
                     e.preventDefault();
                     showSlide(index);
-                    return false;
-                };
-            });
-            
-            // پشتیبانی از سوایپ برای دستگاه‌های لمسی
-            const slideshow = document.querySelector('.text-image-slideshow');
-            
-            if (slideshow) {
-                slideshow.addEventListener('touchstart', function(e) {
-                    touchStartX = e.changedTouches[0].screenX;
+                    stopSlideshow();
+                    startSlideshow();
                 });
                 
-                slideshow.addEventListener('touchend', function(e) {
+                dot.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    showSlide(index);
+                    stopSlideshow();
+                    startSlideshow();
+                });
+            });
+            
+            // شروع اسلایدشو خودکار
+            function startSlideshow() {
+                stopSlideshow();
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+            
+            // توقف اسلایدشو خودکار
+            function stopSlideshow() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+            }
+            
+            // پشتیبانی از سوایپ برای دستگاه‌های لمسی
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            if (slideshowContainer) {
+                slideshowContainer.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopSlideshow(); // توقف اسلایدشو خودکار هنگام لمس
+                });
+                
+                slideshowContainer.addEventListener('touchend', function(e) {
                     touchEndX = e.changedTouches[0].screenX;
                     handleSwipe();
+                    startSlideshow(); // شروع مجدد اسلایدشو خودکار پس از لمس
                 });
             }
             
             function handleSwipe() {
-                // آستانه برای تشخیص سوایپ (بر حسب پیکسل)
                 const threshold = 50;
                 
                 if (touchEndX + threshold < touchStartX) {
                     // سوایپ به چپ - اسلاید بعدی
-                    showSlide(currentSlide + 1);
+                    nextSlide();
                 } else if (touchEndX > touchStartX + threshold) {
                     // سوایپ به راست - اسلاید قبلی
-                    showSlide(currentSlide - 1);
+                    prevSlide();
                 }
+            }
+            
+            // متوقف کردن اسلایدشو با هاور موس (فقط در دسکتاپ)
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+                slideshowContainer.addEventListener('mouseleave', startSlideshow);
             }
             
             // شروع اسلایدشو
             showSlide(0);
+            startSlideshow();
         }
     </script>
 </body>
