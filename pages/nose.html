@@ -2605,11 +2605,18 @@ const Navigation = () => {
                 padding: 20px 30px;
                 height: 300px;
                 overflow-y: auto;
+                background-color: rgba(255, 255, 255, 0.85); /* پس‌زمینه سفید شفاف */
             }
         }
 
         /* استایل برای موبایل - چیدمان عمودی */
         @media (max-width: 767px) {
+            .text-image-slideshow {
+                width: 94%; /* کاهش عرض در موبایل */
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
             .slide-wrapper {
                 flex-direction: column;
             }
@@ -2622,6 +2629,7 @@ const Navigation = () => {
             .slide-text {
                 width: 100%;
                 padding: 15px;
+                background-color: rgba(255, 255, 255, 0.85); /* پس‌زمینه سفید شفاف */
             }
         }
 
