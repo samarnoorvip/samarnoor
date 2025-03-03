@@ -2738,7 +2738,7 @@ const Navigation = () => {
         <!-- اسلاید اول -->
         <div class="slide-wrapper active">
             <div class="slide-image">
-                <img src="https://i.ibb.co/s9JGcp5/image.jpg" alt="توضیح تصویر 1">
+                <img src="https://picsum.photos/800/600?random=3" alt="توضیح تصویر 1">
             </div>
             <div class="slide-text">
                 <h3>عنوان اسلاید اول</h3>
@@ -2750,7 +2750,7 @@ const Navigation = () => {
         <!-- اسلاید دوم -->
         <div class="slide-wrapper">
             <div class="slide-image">
-                <img src="https://i.ibb.co/tMZcXLF/image.jpg" alt="توضیح تصویر 2">
+                <img src="https://picsum.photos/800/600?random=3" alt="توضیح تصویر 2">
             </div>
             <div class="slide-text">
                 <h3>عنوان اسلاید دوم</h3>
@@ -2761,7 +2761,7 @@ const Navigation = () => {
         <!-- اسلاید سوم -->
         <div class="slide-wrapper">
             <div class="slide-image">
-                <img src="https://i.ibb.co/7xTq3hz/min.jpg" alt="توضیح تصویر 3">
+                <img src="https://picsum.photos/800/600?random=3" alt="توضیح تصویر 3">
             </div>
             <div class="slide-text">
                 <h3>عنوان اسلاید سوم</h3>
@@ -2769,9 +2769,9 @@ const Navigation = () => {
             </div>
         </div>
         
-        <!-- دکمه‌های هدایت اسلاید -->
-        <button class="slideshow-nav nav-prev">&#10094;</button>
-        <button class="slideshow-nav nav-next">&#10095;</button>
+        <!-- دکمه‌های هدایت اسلاید - اصلاح شده -->
+        <button class="slideshow-nav nav-prev">&lt;</button>
+        <button class="slideshow-nav nav-next">&gt;</button>
         
         <!-- نقاط نشانگر اسلاید‌ها -->
         <div class="slideshow-dots">
@@ -2784,6 +2784,7 @@ const Navigation = () => {
     <script>
         // کد جاوااسکریپت اصلاح شده برای کنترل اسلایدشو
         document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM Content Loaded - initializing slideshow");
             initSlideshow();
         });
 
@@ -2794,6 +2795,9 @@ const Navigation = () => {
         };
 
         function initSlideshow() {
+            // دیباگ برای بررسی اجرای تابع
+            console.log("initSlideshow function executing");
+            
             // متغیرهای اصلی
             const slideshowContainer = document.querySelector('.text-image-slideshow');
             const slides = document.querySelectorAll('.slide-wrapper');
@@ -2803,10 +2807,20 @@ const Navigation = () => {
             let currentSlide = 0;
             let slideInterval;
             
-            if (!slides.length) return;
+            // دیباگ المان‌های اصلی
+            console.log("Total slides:", slides.length);
+            console.log("Prev button:", prevButton);
+            console.log("Next button:", nextButton);
+            
+            if (!slides.length) {
+                console.error("No slides found!");
+                return;
+            }
             
             // نمایش اسلاید با شماره مشخص
             function showSlide(n) {
+                console.log("Showing slide:", n);
+                
                 // ریست شماره اسلاید اگر از محدوده خارج شود
                 if (n >= slides.length) {
                     currentSlide = 0;
@@ -2815,6 +2829,8 @@ const Navigation = () => {
                 } else {
                     currentSlide = n;
                 }
+                
+                console.log("Current slide set to:", currentSlide);
                 
                 // غیرفعال کردن همه اسلایدها و دات‌ها
                 slides.forEach(slide => {
@@ -2836,17 +2852,21 @@ const Navigation = () => {
             
             // نمایش اسلاید بعدی
             function nextSlide() {
+                console.log("Next slide");
                 showSlide(currentSlide + 1);
             }
             
             // نمایش اسلاید قبلی
             function prevSlide() {
+                console.log("Previous slide");
                 showSlide(currentSlide - 1);
             }
             
             // اضافه کردن رویدادها به دکمه‌ها
             if (prevButton) {
+                console.log("Adding event listeners to prev button");
                 prevButton.addEventListener('click', function(e) {
+                    console.log("Prev button clicked");
                     e.preventDefault();
                     prevSlide();
                     stopSlideshow();
@@ -2854,6 +2874,7 @@ const Navigation = () => {
                 });
                 
                 prevButton.addEventListener('touchend', function(e) {
+                    console.log("Prev button touched");
                     e.preventDefault();
                     prevSlide();
                     stopSlideshow();
@@ -2862,7 +2883,9 @@ const Navigation = () => {
             }
             
             if (nextButton) {
+                console.log("Adding event listeners to next button");
                 nextButton.addEventListener('click', function(e) {
+                    console.log("Next button clicked");
                     e.preventDefault();
                     nextSlide();
                     stopSlideshow();
@@ -2870,6 +2893,7 @@ const Navigation = () => {
                 });
                 
                 nextButton.addEventListener('touchend', function(e) {
+                    console.log("Next button touched");
                     e.preventDefault();
                     nextSlide();
                     stopSlideshow();
@@ -2880,6 +2904,7 @@ const Navigation = () => {
             // رویداد کلیک روی دات‌ها
             dots.forEach(function(dot, index) {
                 dot.addEventListener('click', function(e) {
+                    console.log("Dot", index, "clicked");
                     e.preventDefault();
                     showSlide(index);
                     stopSlideshow();
@@ -2887,6 +2912,7 @@ const Navigation = () => {
                 });
                 
                 dot.addEventListener('touchend', function(e) {
+                    console.log("Dot", index, "touched");
                     e.preventDefault();
                     showSlide(index);
                     stopSlideshow();
@@ -2897,12 +2923,14 @@ const Navigation = () => {
             // شروع اسلایدشو خودکار
             function startSlideshow() {
                 stopSlideshow();
+                console.log("Starting slideshow interval");
                 slideInterval = setInterval(nextSlide, 3000);
             }
             
             // توقف اسلایدشو خودکار
             function stopSlideshow() {
                 if (slideInterval) {
+                    console.log("Stopping slideshow interval");
                     clearInterval(slideInterval);
                 }
             }
@@ -2914,11 +2942,13 @@ const Navigation = () => {
             if (slideshowContainer) {
                 slideshowContainer.addEventListener('touchstart', function(e) {
                     touchStartX = e.changedTouches[0].screenX;
+                    console.log("Touch start at:", touchStartX);
                     stopSlideshow(); // توقف اسلایدشو خودکار هنگام لمس
                 });
                 
                 slideshowContainer.addEventListener('touchend', function(e) {
                     touchEndX = e.changedTouches[0].screenX;
+                    console.log("Touch end at:", touchEndX);
                     handleSwipe();
                     startSlideshow(); // شروع مجدد اسلایدشو خودکار پس از لمس
                 });
@@ -2926,23 +2956,34 @@ const Navigation = () => {
             
             function handleSwipe() {
                 const threshold = 50;
+                console.log("Swipe distance:", touchEndX - touchStartX);
                 
                 if (touchEndX + threshold < touchStartX) {
                     // سوایپ به چپ - اسلاید بعدی
+                    console.log("Swipe left - next slide");
                     nextSlide();
                 } else if (touchEndX > touchStartX + threshold) {
                     // سوایپ به راست - اسلاید قبلی
+                    console.log("Swipe right - previous slide");
                     prevSlide();
                 }
             }
             
             // متوقف کردن اسلایدشو با هاور موس (فقط در دسکتاپ)
             if (window.matchMedia("(min-width: 768px)").matches) {
-                slideshowContainer.addEventListener('mouseenter', stopSlideshow);
-                slideshowContainer.addEventListener('mouseleave', startSlideshow);
+                slideshowContainer.addEventListener('mouseenter', function() {
+                    console.log("Mouse entered container");
+                    stopSlideshow();
+                });
+                
+                slideshowContainer.addEventListener('mouseleave', function() {
+                    console.log("Mouse left container");
+                    startSlideshow();
+                });
             }
             
             // شروع اسلایدشو
+            console.log("Initial slideshow setup complete");
             showSlide(0);
             startSlideshow();
         }
